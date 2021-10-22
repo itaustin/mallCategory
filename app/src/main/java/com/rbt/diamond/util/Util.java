@@ -17,6 +17,11 @@ import com.google.gson.Gson;
 import com.rbt.diamond.public_bean.ResultMsgBean;
 import com.sdsmdg.tastytoast.TastyToast;
 
+import org.qinsong.lib.pay.PAY_TYPE;
+import org.qinsong.lib.pay.PayAPI;
+import org.qinsong.lib.pay.PayCallback;
+import org.qinsong.lib.pay.PayInfo;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -158,25 +163,25 @@ public class Util {
     }
 
     //启动支付
-//    public static void paySdk(Activity context, PayInfo payInfo, PAY_TYPE pay_type) {
-//        PayAPI.get(context, pay_type).pay(payInfo, new PayCallback() {
-//            @Override
-//            public void onComplete(PAY_TYPE payType, String result) {
-//                //同步支付结果成功
-//                Util.showToastSuccess(context, "支付成功");
-//            }
-//
-//            @Override
-//            public void onFail(PAY_TYPE payType, String msg) {
-//                System.out.println("支付失败");
-//            }
-//
-//            @Override
-//            public void onCancel(PAY_TYPE payType) {
-//                System.out.println("支付取消");
-//            }
-//        });
-//    }
+    public static void paySdk(Activity context, PayInfo payInfo, PAY_TYPE pay_type) {
+        PayAPI.get(context, pay_type).pay(payInfo, new PayCallback() {
+            @Override
+            public void onComplete(PAY_TYPE payType, String result) {
+                //同步支付结果成功
+                Util.showToastSuccess(context, "支付成功");
+            }
+
+            @Override
+            public void onFail(PAY_TYPE payType, String msg) {
+                System.out.println("支付失败");
+            }
+
+            @Override
+            public void onCancel(PAY_TYPE payType) {
+                System.out.println("支付取消");
+            }
+        });
+    }
 
     public static String getAppVersionCode(Context context) {
         int versioncode = 0;
