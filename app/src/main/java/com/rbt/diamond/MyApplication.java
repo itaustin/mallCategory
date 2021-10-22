@@ -42,7 +42,7 @@ public class MyApplication extends Application {
 
         new DensityHelper(this, DESIGN_WIDTH).activate();
 
-        final ClearableCookieJar cookieJar1 = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(getApplicationContext()));
+//        final ClearableCookieJar cookieJar1 = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(getApplicationContext()));
 
         HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory(null, null, null);
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
@@ -51,7 +51,7 @@ public class MyApplication extends Application {
                 .readTimeout(10000L, TimeUnit.MILLISECONDS)
                 .sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)
 //                其他配置
-                .cookieJar(cookieJar1)
+//                .cookieJar(cookieJar1)
                 .build();
 
         OkHttpUtils.initClient(okHttpClient);
