@@ -7,11 +7,24 @@
         <entry key="../../.gradle/caches/transforms-3/641052f6de92399d7241182573706c9c/transformed/jetified-CustomHotelCalender-V1.0.2/res/layout/popupwindow_hotel_date.xml" value="0.16979166666666667" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/diamond/app/src/main/res/layout/activity_main.xml" value="0.34375" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/diamond/app/src/main/res/layout/activity_splash.xml" value="0.34375" />
+        <entry key="app/src/main/res/drawable/big_image_one_bg.xml" value="0.3328125" />
+        <entry key="app/src/main/res/drawable/button_border.xml" value="0.3328125" />
+        <entry key="app/src/main/res/drawable/home_danger_bg.xml" value="0.3328125" />
+        <entry key="app/src/main/res/drawable/level_grade_background.xml" value="0.249609375" />
+        <entry key="app/src/main/res/drawable/login_btn_background.xml" value="0.249609375" />
+        <entry key="app/src/main/res/drawable/login_line_bg.xml" value="0.249609375" />
         <entry key="app/src/main/res/drawable/mall_index_search_bg.xml" value="0.3328125" />
         <entry key="app/src/main/res/drawable/mall_index_todo_bg.xml" value="0.3328125" />
+        <entry key="app/src/main/res/drawable/my_center_background_white.xml" value="0.249609375" />
+        <entry key="app/src/main/res/drawable/my_team_bg.xml" value="0.249609375" />
+        <entry key="app/src/main/res/drawable/standard_btn_background.xml" value="0.249609375" />
+        <entry key="app/src/main/res/layout/activity_certificate.xml" value="0.226953125" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.2375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.31666666666666665" />
         <entry key="app/src/main/res/layout/banner_image.xml" value="0.31666666666666665" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.31666666666666665" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_my.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/member_center_item.xml" value="0.2375" />
         <entry key="app/src/main/res/menu/mall.xml" value="0.31666666666666665" />
       </map>
     </option>

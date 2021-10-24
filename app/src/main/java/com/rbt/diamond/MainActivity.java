@@ -7,6 +7,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,6 +15,9 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.rbt.diamond.activity.center.CertificateActivity;
+import com.rbt.diamond.activity.center.MyFragment;
+import com.rbt.diamond.activity.passport.LoginActivity;
 import com.rbt.diamond.fragment.HomeFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getWindow().setStatusBarColor(0xff);
+
+        Intent intent = new Intent(MainActivity.this, CertificateActivity.class);
+        startActivity(intent);
 
         mall();
 
@@ -63,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                     case 2:
                         return new HomeFragment();
                     case 3:
-                        return new HomeFragment();
+                        return new MyFragment();
                 }
                 return null;
             }
