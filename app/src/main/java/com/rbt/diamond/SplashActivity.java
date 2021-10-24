@@ -18,15 +18,11 @@ public class SplashActivity extends AppCompatActivity {
 
         videoView = findViewById(R.id.videoView);
 
-
-
-        videoView.setVideoURI(R.mipmap.splash);
-
         Thread myThread = new Thread() {
             @Override
             public void run() {
                 try {
-                    sleep(5000);
+                    sleep(1);
                     Intent it = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(it);
                     finish();

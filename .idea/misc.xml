@@ -3,8 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.33177083333333335" />
+        <entry key="../../.gradle/caches/transforms-3/641052f6de92399d7241182573706c9c/transformed/jetified-CustomHotelCalender-V1.0.2/res/layout/popupwindow_hotel_date.xml" value="0.16979166666666667" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/diamond/app/src/main/res/layout/activity_main.xml" value="0.34375" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/diamond/app/src/main/res/layout/activity_splash.xml" value="0.34375" />
+        <entry key="app/src/main/res/drawable/mall_index_search_bg.xml" value="0.3328125" />
+        <entry key="app/src/main/res/drawable/mall_index_todo_bg.xml" value="0.3328125" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.31666666666666665" />
+        <entry key="app/src/main/res/layout/banner_image.xml" value="0.31666666666666665" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.31666666666666665" />
+        <entry key="app/src/main/res/menu/mall.xml" value="0.31666666666666665" />
       </map>
     </option>
   </component>

@@ -19,8 +19,6 @@ import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersisto
 import com.hjq.bar.TitleBar;
 import com.hjq.bar.initializer.LightBarInitializer;
 import com.rbt.diamond.DensityHelper;
-import com.rbt.diamond.im.JWebSocketClient;
-import com.rbt.diamond.im.JWebSocketClientService;
 import com.vector.update_app.UpdateAppManager;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.https.HttpsUtils;
@@ -33,10 +31,6 @@ import okhttp3.OkHttpClient;
 public class MyApplication extends Application {
 
     private static final float DESIGN_WIDTH = 360;
-
-    public static JWebSocketClient client;
-    public static JWebSocketClientService.JWebSocketClientBinder binder;
-    public static JWebSocketClientService jWebSClientService;
 
     public static Intent bindIntent;
 
@@ -71,38 +65,5 @@ public class MyApplication extends Application {
             }
         });
 
-        startJWebSClientService();
-        bindService();
-    }
-
-    public static ServiceConnection serviceConnection = new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-            Log.e("MainActivity", "服务与活动成功绑定");
-            binder = (JWebSocketClientService.JWebSocketClientBinder) iBinder;
-            jWebSClientService = binder.getService();
-            client = jWebSClientService.client;
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName componentName) {
-            Log.e("MainActivity", "服务与活动成功断开");
-        }
-    };
-
-    /**
-     * 绑定服务
-     */
-    private void bindService() {
-        bindIntent = new Intent(getApplicationContext(), JWebSocketClientService.class);
-        bindService(bindIntent, serviceConnection, BIND_AUTO_CREATE);
-    }
-
-    /**
-     * 启动服务（websocket客户端服务）
-     */
-    private void startJWebSClientService() {
-        Intent intent = new Intent(getApplicationContext(), JWebSocketClientService.class);
-        startService(intent);
     }
 }
