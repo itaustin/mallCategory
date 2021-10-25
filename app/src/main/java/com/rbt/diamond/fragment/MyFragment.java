@@ -1,9 +1,12 @@
-package com.rbt.diamond.activity.center;
+package com.rbt.diamond.fragment;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,34 +16,35 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.lxj.easyadapter.EasyAdapter;
 import com.lxj.easyadapter.ViewHolder;
 import com.rbt.diamond.R;
+import com.rbt.diamond.databinding.FragmentMyBinding;
 import com.rbt.diamond.public_bean.MyViewItemBean;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MyFragment extends Fragment {
-    protected View view;
-    protected RecyclerView view_recycler;
     protected List<MyViewItemBean.DataBean> list = new ArrayList<>();
+    protected ViewModel viewModel;
+    protected FragmentMyBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_my, container, false);
+//        view = inflater.inflate(R.layout.fragment_my, container, false);
 
-        initView();
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_my, container, false);
+
+        // test code
+        viewModel = new ViewModelProvider(requireActivity()).get(ViewModel.class);
+        binding.setData(viewModel);
+        binding.setLifecycleOwner(this);
 
         initLayoutManager();
 
-        return view;
-    }
-
-    protected void initView(){
-        view_recycler = view.findViewById(R.id.view_recycler);
+        return binding.getRoot();
     }
 
     protected void initLayoutManager(){
@@ -75,9 +79,9 @@ public class MyFragment extends Fragment {
         certificate.setName("实名认证");
         list.add(certificate);
 
-        view_recycler.setLayoutManager(new GridLayoutManager(requireActivity(), 4));
+        binding.viewRecycler.setLayoutManager(new GridLayoutManager(requireActivity(), 4));
 
-        view_recycler.setAdapter(new EasyAdapter<MyViewItemBean.DataBean>(list, R.layout.member_center_item) {
+        binding.viewRecycler.setAdapter(new EasyAdapter<MyViewItemBean.DataBean>(list, R.layout.member_center_item) {
 
             @Override
             protected void bind(@NonNull ViewHolder viewHolder, MyViewItemBean.DataBean dataBean, int i) {

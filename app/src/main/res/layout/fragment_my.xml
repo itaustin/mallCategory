@@ -1,388 +1,392 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activity.center.MyFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.core.widget.NestedScrollView
+    <data>
+        <variable
+            name="data"
+            type="com.rbt.diamond.fragment.ViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".fragment.MyFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout10"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="match_parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout11"
-                android:layout_width="0dp"
-                android:layout_marginTop="41.5dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/constraintLayout10"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <com.rbt.diamond.custom_view.CustomRoundAngleImageView
-                    android:id="@+id/customRoundAngleImageView"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="22.5dp"
-                    android:src="@mipmap/avatar"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <LinearLayout
-                    android:layout_width="35dp"
-                    android:layout_height="12dp"
-                    android:gravity="center"
-                    android:background="@drawable/level_grade_background"
-                    app:layout_constraintBottom_toBottomOf="@+id/customRoundAngleImageView"
-                    app:layout_constraintEnd_toEndOf="@+id/customRoundAngleImageView"
-                    app:layout_constraintStart_toStartOf="@+id/customRoundAngleImageView">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="lv.5"
-                        android:textColor="#ffcab369"
-                        android:textSize="8sp"
-                        />
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="wrap_content"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout11"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="41.5dp"
                     android:layout_height="wrap_content"
-                    android:text="一个美女"
-                    android:textColor="#ff000000"
-                    android:textStyle="bold"
-                    android:layout_marginStart="15.5dp"
-                    android:textSize="19sp"
-                    app:layout_constraintStart_toEndOf="@+id/customRoundAngleImageView"
-                    app:layout_constraintTop_toTopOf="@+id/customRoundAngleImageView" />
-
-                <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:src="@mipmap/setting"
-                    android:layout_marginEnd="22.5dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayout9"
-                android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:layout_marginTop="56dp"
-                android:background="@drawable/my_center_background_white"
-                android:gravity="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout11">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="31dp"
-                        android:layout_height="25dp"
-                        android:src="@mipmap/payment" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="待付款"
-                        android:textColor="#ff000000"
-                        android:textSize="14sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32.5dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="31dp"
-                        android:layout_height="25dp"
-                        android:src="@mipmap/receipt" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="待发货"
-                        android:textColor="#ff000000"
-                        android:textSize="14sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32.5dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="31dp"
-                        android:layout_height="25dp"
-                        android:src="@mipmap/received" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="待收货"
-                        android:textColor="#ff000000"
-                        android:textSize="14sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32.5dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="31dp"
-                        android:layout_height="25dp"
-                        android:src="@mipmap/after_sales" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="售后"
-                        android:textColor="#ff000000"
-                        android:textSize="14sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32.5dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="31dp"
-                        android:layout_height="25dp"
-                        android:src="@mipmap/all" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="全部订单"
-                        android:textColor="#ff000000"
-                        android:textSize="14sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="284dp"
-                android:layout_height="32dp"
-                android:layout_marginBottom="-5dp"
-                android:background="@drawable/my_team_bg"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayout9"
-                app:layout_constraintEnd_toEndOf="@+id/linearLayout9"
-                app:layout_constraintStart_toStartOf="@+id/linearLayout9">
-
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="当前等级："
-                    android:textColor="#ff1e150b"
-                    android:layout_marginStart="13.5dp"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="5级"
-                    android:textColor="#ffffffff"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView7"
-                    app:layout_constraintStart_toEndOf="@+id/textView7"
-                    app:layout_constraintTop_toTopOf="@+id/textView7" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="9.5dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="查看我的团队"
-                        android:layout_marginEnd="7dp"
-                        android:textColor="#ffc9b369"
-                        android:textSize="14sp"
-                        />
+                    <com.rbt.diamond.custom_view.CustomRoundAngleImageView
+                        android:id="@+id/customRoundAngleImageView"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="22.5dp"
+                        android:src="@mipmap/avatar"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:layout_width="35dp"
+                        android:layout_height="12dp"
+                        android:gravity="center"
+                        android:background="@drawable/level_grade_background"
+                        app:layout_constraintBottom_toBottomOf="@+id/customRoundAngleImageView"
+                        app:layout_constraintEnd_toEndOf="@+id/customRoundAngleImageView"
+                        app:layout_constraintStart_toStartOf="@+id/customRoundAngleImageView">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="lv.5"
+                            android:textColor="#ffcab369"
+                            android:textSize="8sp" />
+
+                    </LinearLayout>
 
                     <TextView
+                        android:id="@+id/nickName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=">"
-                        android:textColor="#ffc9b369"
-                        android:textSize="14sp" />
-
-                </LinearLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout12"
-                android:layout_width="243dp"
-                android:layout_height="84.5dp"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/money_board_background"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout9">
-
-                <LinearLayout
-                    android:id="@+id/margin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="@+id/linearLayout5"
-                    app:layout_constraintEnd_toStartOf="@+id/linearLayout5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/linearLayout5">
+                        android:text="@{String.valueOf(data.number)}"
+                        android:textColor="#ff000000"
+                        android:textStyle="bold"
+                        android:onClick="@{() -> data.setNumber()}"
+                        android:layout_marginStart="15.5dp"
+                        android:textSize="19sp"
+                        app:layout_constraintStart_toEndOf="@+id/customRoundAngleImageView"
+                        app:layout_constraintTop_toTopOf="@+id/customRoundAngleImageView" />
 
                     <ImageView
-                        android:layout_width="28dp"
-                        android:layout_height="26dp"
-                        android:src="@mipmap/team"
-                        />
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@mipmap/setting"
+                        android:layout_marginEnd="22.5dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="我的团队"
-                        android:layout_marginTop="13.5dp"
-                        android:textColor="#ff000000"
-                        android:textSize="14sp"
-                        />
-
-                </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <LinearLayout
-                    android:id="@+id/linearLayout5"
-                    android:layout_width="1dp"
-                    android:layout_height="30dp"
-                    android:background="@drawable/vert_line_background"
-                    android:orientation="horizontal"
-                    android:visibility="visible"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <LinearLayout
-                    android:id="@+id/commission"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/linearLayout9"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:layout_marginTop="56dp"
+                    android:background="@drawable/my_center_background_white"
                     android:gravity="center"
-                    android:orientation="vertical"
-                    android:visibility="visible"
-                    app:layout_constraintBottom_toBottomOf="@+id/linearLayout5"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/linearLayout5"
-                    app:layout_constraintTop_toTopOf="@+id/linearLayout5">
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout11">
 
-                    <ImageView
-                        android:layout_width="28dp"
-                        android:layout_height="26dp"
-                        android:src="@mipmap/points"
-                        />
-
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="我的积分"
-                        android:layout_marginTop="13.5dp"
-                        android:textColor="#ff000000"
-                        android:textSize="14sp"
-                        />
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="31dp"
+                            android:layout_height="25dp"
+                            android:src="@mipmap/payment" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:text="待付款"
+                            android:textColor="#ff000000"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32.5dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="31dp"
+                            android:layout_height="25dp"
+                            android:src="@mipmap/receipt" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:text="待发货"
+                            android:textColor="#ff000000"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32.5dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="31dp"
+                            android:layout_height="25dp"
+                            android:src="@mipmap/received" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:text="待收货"
+                            android:textColor="#ff000000"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32.5dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="31dp"
+                            android:layout_height="25dp"
+                            android:src="@mipmap/after_sales" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:text="售后"
+                            android:textColor="#ff000000"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32.5dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="31dp"
+                            android:layout_height="25dp"
+                            android:src="@mipmap/all" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:text="全部订单"
+                            android:textColor="#ff000000"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="284dp"
+                    android:layout_height="32dp"
+                    android:layout_marginBottom="-5dp"
+                    android:background="@drawable/my_team_bg"
+                    app:layout_constraintBottom_toTopOf="@+id/linearLayout9"
+                    app:layout_constraintEnd_toEndOf="@+id/linearLayout9"
+                    app:layout_constraintStart_toStartOf="@+id/linearLayout9">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="17dp"
-                android:layout_marginBottom="20dp"
-                android:paddingBottom="15dp"
-                android:background="@drawable/my_center_background_white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout12"
-                app:layout_constraintVertical_bias="0.0">
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="当前等级："
+                        android:textColor="#ff1e150b"
+                        android:layout_marginStart="13.5dp"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="11.5dp"
-                    android:layout_marginTop="16.5dp"
-                    android:text="我的服务"
-                    android:textColor="#ff000000"
-                    android:textSize="14sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5级"
+                        android:textColor="#ffffffff"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView7"
+                        app:layout_constraintStart_toEndOf="@+id/textView7"
+                        app:layout_constraintTop_toTopOf="@+id/textView7" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/view_recycler"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="-10dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="9.5dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="查看我的团队"
+                            android:layout_marginEnd="7dp"
+                            android:textColor="#ffc9b369"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=">"
+                            android:textColor="#ffc9b369"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout12"
+                    android:layout_width="243dp"
+                    android:layout_height="84.5dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/money_board_background"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView9" />
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout9">
+
+                    <LinearLayout
+                        android:id="@+id/margin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="@+id/linearLayout5"
+                        app:layout_constraintEnd_toStartOf="@+id/linearLayout5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/linearLayout5">
+
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="26dp"
+                            android:src="@mipmap/team" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="我的团队"
+                            android:layout_marginTop="13.5dp"
+                            android:textColor="#ff000000"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout5"
+                        android:layout_width="1dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/vert_line_background"
+                        android:orientation="horizontal"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:id="@+id/commission"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="@+id/linearLayout5"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/linearLayout5"
+                        app:layout_constraintTop_toTopOf="@+id/linearLayout5">
+
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="26dp"
+                            android:src="@mipmap/points" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="我的积分"
+                            android:layout_marginTop="13.5dp"
+                            android:textColor="#ff000000"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginBottom="20dp"
+                    android:paddingBottom="15dp"
+                    android:background="@drawable/my_center_background_white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout12"
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="11.5dp"
+                        android:layout_marginTop="16.5dp"
+                        android:text="我的服务"
+                        android:textColor="#ff000000"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/view_recycler"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="-10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
 
-    </androidx.core.widget.NestedScrollView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
