@@ -14,7 +14,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-import com.rbt.diamond.activity.center.CertificateActivity;
+import com.rbt.diamond.activity.passport.RegisterActivity;
 import com.rbt.diamond.fragment.MyFragment;
 import com.rbt.diamond.fragment.HomeFragment;
 
@@ -27,10 +27,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getWindow().setStatusBarColor(0xff);
+//        getWindow().setStatusBarColor(0xff);
 
-//        Intent intent = new Intent(MainActivity.this, CertificateActivity.class);
-//        startActivity(intent);
+        Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+        startActivity(intent);
 
         mall();
 

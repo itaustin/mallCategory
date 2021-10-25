@@ -2,8 +2,8 @@
 buildscript {
     repositories {
         // 阿里云云效仓库：https://maven.aliyun.com/mvn/guide
-        maven { url 'https://maven.aliyun.com/repository/jcenter' }
-        maven { url 'https://maven.aliyun.com/repository/google' }
+//        maven { url 'https://maven.aliyun.com/repository/google' }
+//        maven { url 'https://maven.aliyun.com/repository/jcenter' }
         // 华为开源镜像：https://mirrors.huaweicloud.com
         maven { url 'https://repo.huaweicloud.com/repository/maven' }
         // JitPack 远程仓库：https://jitpack.io
@@ -11,10 +11,10 @@ buildscript {
         // MavenCentral 远程仓库：https://mvnrepository.com
         mavenCentral()
         google()
-        jcenter()
     }
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.3"
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
