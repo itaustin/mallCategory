@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/invite_background"
+        tools:context=".activity.center.InviteFriendsActivity">
+
+        <com.hjq.bar.TitleBar
+            android:id="@+id/titleBar"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:background="#ffffff"
+            app:drawableSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:leftColor="#333333"
+            app:leftTitle="返回"
+            app:title="邀请好友"
+            app:lineVisible="false"
+            app:rightColor="#333333"
+            app:titleColor="#333333" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="280dp"
+            android:layout_height="410dp"
+            android:src="@mipmap/qrcode_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleBar"
+            app:layout_constraintVertical_bias="0.57" />
+
+        <ImageView
+            android:id="@+id/image_code"
+            android:layout_width="185dp"
+            android:layout_height="185dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView7"
+            app:layout_constraintVertical_bias="0.68" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="32dp"
+            android:src="@mipmap/user_avatar"
+            app:layout_constraintStart_toStartOf="@+id/imageView7"
+            app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+        <TextView
+            android:id="@+id/nickName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17.5dp"
+            android:text="周啦啦"
+            android:textColor="#ff333333"
+            android:textSize="17sp"
+            app:layout_constraintStart_toEndOf="@+id/imageView8"
+            app:layout_constraintTop_toTopOf="@+id/imageView8" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="点击二维码即可\n保存到手机相册"
+            android:textColor="#ff999999"
+            android:layout_marginTop="7dp"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@+id/nickName"
+            app:layout_constraintTop_toBottomOf="@+id/nickName" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -205,4 +205,8 @@ public class Util {
 
         return uri.toString();
     }
+
+    public static String getCustomUrl(String customUrl){
+        return url + customUrl;
+    }
 }

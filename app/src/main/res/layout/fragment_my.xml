@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="data"
-            type="com.rbt.diamond.fragment.ViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -68,10 +66,8 @@
                         android:id="@+id/nickName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(data.number)}"
                         android:textColor="#ff000000"
                         android:textStyle="bold"
-                        android:onClick="@{() -> data.setNumber()}"
                         android:layout_marginStart="15.5dp"
                         android:textSize="19sp"
                         app:layout_constraintStart_toEndOf="@+id/customRoundAngleImageView"
