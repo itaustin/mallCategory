@@ -6,9 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
+import com.bumptech.glide.Glide;
 import com.rbt.diamond.R;
+import com.rbt.diamond.databinding.GoodsItemBinding;
 import com.rbt.diamond.public_bean.GoodsListBean;
 
 import java.util.ArrayList;
@@ -40,15 +44,21 @@ public class GoodsListAdapter extends RecyclerView.Adapter<GoodsListAdapter.View
     @Override
     public GoodsListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.goods_item, parent, false);
-        return new ViewHolder(view);
+        GoodsItemBinding binding = DataBindingUtil.inflate(inflater, R.layout.goods_item, parent, false);
+        return new ViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull GoodsListAdapter.ViewHolder holder, int position) {
         GoodsListBean.DataBeanX.ListBean.DataBean data = list.get(position);
 
-        System.out.println(data.getGoods_name());
+        try {
+            holder.binding.goodsName.setText(data.getGoods_name());
+            Glide.with(context).load(data.getGoods_image()).into(holder.binding.goodsImage);
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
     }
 
     @Override
@@ -57,9 +67,11 @@ public class GoodsListAdapter extends RecyclerView.Adapter<GoodsListAdapter.View
     }
 
     protected class ViewHolder extends RecyclerView.ViewHolder{
+        protected GoodsItemBinding binding;
 
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
+        public ViewHolder(GoodsItemBinding binding){
+            super(binding.getRoot());
+            this.binding = binding;
         }
     }
 }

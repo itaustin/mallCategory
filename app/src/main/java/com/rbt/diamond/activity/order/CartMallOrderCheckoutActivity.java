@@ -1,4 +1,4 @@
-package com.rbt.diamond.activity.goods;
+package com.rbt.diamond.activity.order;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;

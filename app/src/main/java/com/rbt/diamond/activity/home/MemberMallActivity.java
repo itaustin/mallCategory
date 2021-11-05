@@ -141,14 +141,15 @@ public class MemberMallActivity extends AppCompatActivity {
                                 adapter.addData(goodsListBean.getData().getList().getData());
                             } else {
                                 adapter = new GoodsListAdapter(goodsListBean.getData().getList().getData(), MemberMallActivity.this);
+                                binding.goodsRecycler.setAdapter(adapter);
                             }
                             total_page = goodsListBean.getData().getList().getLast_page();
                             System.out.println("adapter_count" + adapter.getItemCount());
                         } else {
-                            adapter = null;
+                            adapter = new GoodsListAdapter(goodsListBean.getData().getList().getData(), MemberMallActivity.this);
                             binding.smartRefreshLayout.finishLoadMoreWithNoMoreData();
+                            binding.goodsRecycler.setAdapter(adapter);
                         }
-                        binding.goodsRecycler.setAdapter(adapter);
                     }
                 });
     }
