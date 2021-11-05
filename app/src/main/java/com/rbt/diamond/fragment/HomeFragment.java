@@ -60,6 +60,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(requireActivity(), MemberMallActivity.class);
+                intent.putExtra("category_id", "10001");
                 startActivity(intent);
             }
         });
@@ -67,7 +68,9 @@ public class HomeFragment extends Fragment {
         binding.saleMall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(requireActivity(), MemberMallActivity.class);
+                intent.putExtra("category_id", "10002");
+                startActivity(intent);
             }
         });
 
