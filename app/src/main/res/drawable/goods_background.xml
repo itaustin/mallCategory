@@ -6,6 +6,7 @@
             <item android:name="android:shadowDx">0</item>
             <item android:name="android:shadowDy">1</item>
             <item android:name="android:shadowColor">#14252525</item>
+            <corners android:radius="20dp" />
         </shape>
     </item>
 </selector>

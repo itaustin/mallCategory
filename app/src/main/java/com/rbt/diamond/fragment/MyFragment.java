@@ -25,8 +25,14 @@ import com.lxj.easyadapter.ViewHolder;
 import com.lxj.xpopup.XPopup;
 import com.lxj.xpopup.interfaces.OnConfirmListener;
 import com.rbt.diamond.R;
+import com.rbt.diamond.activity.address.AddressManagerActivity;
+import com.rbt.diamond.activity.center.CertificateActivity;
 import com.rbt.diamond.activity.center.InviteFriendsActivity;
+import com.rbt.diamond.activity.my.MyTeamActivity;
+import com.rbt.diamond.activity.my.SettingActivity;
+import com.rbt.diamond.activity.order.OrderActivity;
 import com.rbt.diamond.activity.passport.LoginActivity;
+import com.rbt.diamond.activity.points.MyPointsActivity;
 import com.rbt.diamond.databinding.FragmentMyBinding;
 import com.rbt.diamond.public_bean.MyViewItemBean;
 import com.rbt.diamond.public_bean.UserInfoBean;
@@ -127,20 +133,20 @@ public class MyFragment extends Fragment {
 
         list.clear();
 
-        MyViewItemBean.DataBean c2c_market = new MyViewItemBean.DataBean();
-        c2c_market.setEng_name("c2c_market");
-        c2c_market.setName("我的交易市场");
-        list.add(c2c_market);
+//        MyViewItemBean.DataBean c2c_market = new MyViewItemBean.DataBean();
+//        c2c_market.setEng_name("c2c_market");
+//        c2c_market.setName("我的交易市场");
+//        list.add(c2c_market);
 
         MyViewItemBean.DataBean address = new MyViewItemBean.DataBean();
         address.setEng_name("address");
         address.setName("地址管理");
         list.add(address);
 
-        MyViewItemBean.DataBean market_cart = new MyViewItemBean.DataBean();
-        market_cart.setEng_name("market_cart");
-        market_cart.setName("购物车");
-        list.add(market_cart);
+//        MyViewItemBean.DataBean market_cart = new MyViewItemBean.DataBean();
+//        market_cart.setEng_name("market_cart");
+//        market_cart.setName("购物车");
+//        list.add(market_cart);
 
         MyViewItemBean.DataBean contact_customer_service = new MyViewItemBean.DataBean();
         contact_customer_service.setEng_name("contact_customer_service");
@@ -167,6 +173,33 @@ public class MyFragment extends Fragment {
         logout.setName("退出登录");
         list.add(logout);
 
+        binding.points.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent pointsIntent = new Intent(requireActivity(), MyPointsActivity.class);
+                startActivity(pointsIntent);
+            }
+        });
+
+        binding.margin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent teamIntent = new Intent(requireActivity(), MyTeamActivity.class);
+                startActivity(teamIntent);
+            }
+        });
+
+        binding.setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent settingIntent = new Intent(requireActivity(), SettingActivity.class);
+                settingIntent.putExtra("mobile_phone", userInfoBean.getData().getUsername());
+                startActivity(settingIntent);
+            }
+        });
+
+        initOrderClick();
+
         binding.viewRecycler.setLayoutManager(new GridLayoutManager(requireActivity(), 4));
 
         binding.viewRecycler.setAdapter(new EasyAdapter<MyViewItemBean.DataBean>(list, R.layout.member_center_item) {
@@ -185,10 +218,10 @@ public class MyFragment extends Fragment {
                         image.setImageResource(R.mipmap.address);
                         name.setText(dataBean.getName());
                         break;
-                    case "market_cart":
-                        image.setImageResource(R.mipmap.market_cart);
-                        name.setText(dataBean.getName());
-                        break;
+//                    case "market_cart":
+//                        image.setImageResource(R.mipmap.market_cart);
+//                        name.setText(dataBean.getName());
+//                        break;
                     case "contact_customer_service":
                         image.setImageResource(R.mipmap.contact_customer_service);
                         name.setText(dataBean.getName());
@@ -215,6 +248,10 @@ public class MyFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
                         System.out.println(dataBean.getEng_name());
+                        if(dataBean.getEng_name() == "address") {
+                            Intent intent = new Intent(requireActivity(), AddressManagerActivity.class);
+                            startActivity(intent);
+                        }
                         if(dataBean.getEng_name() == "invite") {
                             Intent intent = new Intent(requireActivity(), InviteFriendsActivity.class);
                             intent.putExtra("invite_code", userInfoBean.getData().getActive_code());
@@ -234,9 +271,56 @@ public class MyFragment extends Fragment {
                                         }
                                     }).show();
                         }
+                        if(dataBean.getEng_name() == "certificate"){
+                            Intent certificateIntent = new Intent(requireActivity(), CertificateActivity.class);
+                            startActivity(certificateIntent);
+                        }
                     }
                 });
 
+            }
+        });
+    }
+
+    protected void initOrderClick(){
+        binding.allOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent orderIntent = new Intent(requireActivity(), OrderActivity.class);
+                orderIntent.putExtra("position", 0);
+                startActivity(orderIntent);
+            }
+        });
+        binding.payment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent paymentIntent = new Intent(requireActivity(), OrderActivity.class);
+                paymentIntent.putExtra("position", 1);
+                startActivity(paymentIntent);
+            }
+        });
+        binding.delivery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent deliveryIntent = new Intent(requireActivity(), OrderActivity.class);
+                deliveryIntent.putExtra("position", 2);
+                startActivity(deliveryIntent);
+            }
+        });
+        binding.received.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent receivedIntent = new Intent(requireActivity(), OrderActivity.class);
+                receivedIntent.putExtra("position", 3);
+                startActivity(receivedIntent);
+            }
+        });
+        binding.comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent commentIntent = new Intent(requireActivity(), OrderActivity.class);
+                commentIntent.putExtra("position", 4);
+                startActivity(commentIntent);
             }
         });
     }

@@ -23,9 +23,9 @@
             app:layout_constraintTop_toTopOf="parent"
             app:leftColor="#333333"
             app:leftTitle="返回"
-            app:title="商品详情"
             app:lineVisible="false"
             app:rightColor="#333333"
+            app:title="商品详情"
             app:titleColor="#333333" />
 
         <androidx.core.widget.NestedScrollView
@@ -146,9 +146,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="14.5dp"
                         android:text="查看全部 >"
-                        android:visibility="gone"
                         android:textColor="#ff999999"
                         android:textSize="14sp"
+                        android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="@+id/comment_count"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/comment_count" />
@@ -180,9 +180,9 @@
                         android:id="@+id/textView60"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
+                        android:background="#ffffff"
                         android:gravity="center"
                         android:text="商品详情"
-                        android:background="#ffffff"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -211,11 +211,50 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginStart="51.5dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="17dp"
+                    android:src="@mipmap/custom_service" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4.5dp"
+                    android:text="客服"
+                    android:textColor="#ff000000"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/buy_now"
+                android:layout_width="105.5dp"
+                android:layout_height="31dp"
+                android:background="@drawable/sku_item_selected"
+                android:text="立即购买"
+                android:layout_marginEnd="14dp"
+                android:textColor="#ffffff"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
                 android:id="@+id/start_cart"
                 android:layout_width="0dp"
                 android:layout_height="55dp"
-                android:orientation="vertical"
                 android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/add_cart"
                 app:layout_constraintStart_toStartOf="parent"
@@ -230,8 +269,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="购物车"
                     android:layout_marginTop="5dp"
+                    android:text="购物车"
                     android:textColor="#ff415694"
                     android:textSize="13sp" />
 
@@ -245,21 +284,23 @@
                 android:text="加入购物车"
                 android:textColor="#ffffff"
                 android:textSize="15sp"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/buy_now"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
-                android:id="@+id/buy_now"
-                android:layout_width="109.5dp"
-                android:layout_height="55dp"
-                android:background="@drawable/buy_btn_background"
-                android:text="立即购买"
-                android:textColor="#ffffff"
-                android:textSize="15sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+<!--            <Button-->
+<!--                android:id="@+id/buy_now"-->
+<!--                android:layout_width="109.5dp"-->
+<!--                android:layout_height="55dp"-->
+<!--                android:background="@drawable/buy_btn_background"-->
+<!--                android:text="立即购买"-->
+<!--                android:textColor="#ffffff"-->
+<!--                android:textSize="15sp"-->
+<!--                android:visibility="gone"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

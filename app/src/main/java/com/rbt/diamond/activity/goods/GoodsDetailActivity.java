@@ -96,8 +96,9 @@ public class GoodsDetailActivity extends AppCompatActivity implements View.OnCli
     }
 
     protected void initRequestGoodsDetail(){
+        System.out.println("goods_id" + goods_id);
         OkHttpUtils
-                .post()
+                .get()
                 .url(Util.url + "?s=/api/goods/detail")
                 .addParams("goods_id", String.valueOf(goods_id))
                 .addParams("wxapp_id", String.valueOf(10001))

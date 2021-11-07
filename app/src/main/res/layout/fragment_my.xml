@@ -74,6 +74,7 @@
                         app:layout_constraintTop_toTopOf="@+id/customRoundAngleImageView" />
 
                     <ImageView
+                        android:id="@+id/setting"
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:src="@mipmap/setting"
@@ -96,6 +97,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/constraintLayout11">
 
                     <LinearLayout
+                        android:id="@+id/payment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -117,6 +119,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/delivery"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="32.5dp"
@@ -139,6 +142,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/received"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="32.5dp"
@@ -161,6 +165,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/comment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="32.5dp"
@@ -176,13 +181,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
-                            android:text="售后"
+                            android:text="评价"
                             android:textColor="#ff000000"
                             android:textSize="14sp" />
 
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/all_order"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="32.5dp"
@@ -314,7 +320,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <LinearLayout
-                        android:id="@+id/commission"
+                        android:id="@+id/points"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"

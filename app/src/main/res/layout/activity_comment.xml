@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.order.CommentActivity">
+
+    <com.hjq.bar.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:background="#FFFFFF"
+        app:drawableSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:leftColor="#333333"
+        app:leftTitle="返回"
+        app:lineVisible="false"
+        app:rightColor="#333333"
+        app:title="商品评价"
+        app:titleColor="#333333" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/comment_recycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/submit_comment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleBar" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/submit_comment"
+        android:layout_width="310dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="31.5dp"
+        android:background="@drawable/login_btn_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="提交评价"
+            android:textColor="#ffffffff"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

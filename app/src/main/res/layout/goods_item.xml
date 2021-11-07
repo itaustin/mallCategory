@@ -7,12 +7,8 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="170dp"
-        android:layout_height="wrap_content"
-        android:paddingStart="10dp"
-        android:paddingEnd="3dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="10dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout9"
@@ -28,7 +24,7 @@
                 android:id="@+id/goods_image"
                 android:layout_width="163dp"
                 android:layout_height="200dp"
-                android:src="@mipmap/user_avatar"
+                android:src="@mipmap/avatar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

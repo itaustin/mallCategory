@@ -43,7 +43,7 @@ public class MallOrderCheckoutActivity extends AppCompatActivity {
 
     protected EasyAdapter<OrderCheckoutBean.DataBean.GoodsListBean> goodsListBeanEasyAdapter;
 
-    protected TextView freight, total, address_name, phone, address;
+    protected TextView freight, total, address_name, phone, address, bottom_total;
 
     protected ConstraintLayout address_manager;
 
@@ -64,6 +64,7 @@ public class MallOrderCheckoutActivity extends AppCompatActivity {
         titleBar = findViewById(R.id.titleBar);
         freight = findViewById(R.id.freight);
         total = findViewById(R.id.total);
+        bottom_total = findViewById(R.id.bottom_total);
         address_manager = findViewById(R.id.address_manager);
         pay_now = findViewById(R.id.pay_now);
 
@@ -133,6 +134,7 @@ public class MallOrderCheckoutActivity extends AppCompatActivity {
                         } else {
                             freight.setText(bean.getData().getExpress_price());
                             total.setText("小计：" + bean.getData().getOrder_pay_price());
+                            bottom_total.setText("小计：" + bean.getData().getOrder_pay_price());
                             if(bean.getData().getAddress() != null){
                                 address_name.setText(bean.getData().getAddress().getName());
                                 phone.setText(bean.getData().getAddress().getPhone());
@@ -147,7 +149,7 @@ public class MallOrderCheckoutActivity extends AppCompatActivity {
                                 protected void bind(@NonNull ViewHolder viewHolder, OrderCheckoutBean.DataBean.GoodsListBean goodsListBean, int i) {
                                     Glide.with(MallOrderCheckoutActivity.this).load(goodsListBean.getGoods_image()).into((ImageView) viewHolder.getView(R.id.goods_image));
                                     viewHolder.setText(R.id.goods_name, goodsListBean.getGoods_name());
-                                    if (goodsListBean.getCategory_id() == 10006) {
+                                    if (goodsListBean.getCategory_id() == 10006 || goodsListBean.getCategory_id() == 10002) {
                                         viewHolder.setText(R.id.goods_price, "积分：" + goodsListBean.getGoods_price());
                                     } else {
                                         viewHolder.setText(R.id.goods_price, "" + goodsListBean.getGoods_price());

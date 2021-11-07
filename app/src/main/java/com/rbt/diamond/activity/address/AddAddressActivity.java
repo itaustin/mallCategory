@@ -113,6 +113,7 @@ public class AddAddressActivity extends AppCompatActivity {
                             .addParams("phone", phone.getText().toString())
                             .addParams("region", select_address.getText().toString())
                             .addParams("detail", detail.getText().toString())
+                            .addParams("wxapp_id", "10001")
                             .build()
                             .execute(new StringCallback() {
                                 @Override
@@ -122,6 +123,7 @@ public class AddAddressActivity extends AppCompatActivity {
 
                                 @Override
                                 public void onResponse(String response, int id) {
+                                    System.out.println(response);
                                     ResultMsgBean resultMsgBean = Util.ResultFunction(response);
                                     if(resultMsgBean.getCode() == -1){
                                         Util.showToastError(AddAddressActivity.this, "请先登录");

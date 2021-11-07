@@ -6,12 +6,11 @@
 
     <com.rbt.diamond.custom_view.CustomRoundAngleImageView
         android:id="@+id/goods_image"
-        android:layout_width="68dp"
-        android:layout_height="69dp"
+        android:layout_width="97dp"
+        android:layout_height="97dp"
         android:scaleType="fitXY"
         android:layout_marginStart="15.5dp"
         android:layout_marginTop="17.5dp"
-        android:src="@mipmap/avatar"
         android:layout_marginBottom="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +24,7 @@
         android:layout_marginStart="17.5dp"
         android:text="缅甸翡翠糯冰种圆条手镯缅甸翡翠糯冰缅甸
 翡翠糯冰种圆条手镯缅甸翡翠糯冰"
-        android:textColor="#ff333333"
+        android:textColor="#000000"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/goods_image"
         app:layout_constraintTop_toTopOf="@+id/goods_image" />
@@ -34,9 +33,9 @@
         android:id="@+id/goods_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14.5dp"
+        android:layout_marginTop="16.5dp"
         android:text="¥598,00"
-        android:textColor="#ffff2b32"
+        android:textColor="#CAB369"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/goods_name"
         app:layout_constraintTop_toBottomOf="@+id/goods_name" />

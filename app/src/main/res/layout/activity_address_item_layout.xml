@@ -11,7 +11,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:layout_marginStart="21dp"
-        android:text="周女士"
         android:textColor="#ff333333"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +22,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="21dp"
-        android:text="17603412674"
         android:textColor="#ff333333"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,11 +32,8 @@
         android:layout_width="335dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="山西省太原市小店区平阳路街道八一街石林苑八一街石
-林苑八一街石林苑"
         android:textColor="#ff333333"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@+id/phone"
         app:layout_constraintStart_toStartOf="@+id/name"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
@@ -90,7 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="编辑"
-            android:textColor="#ff5a72b9"
+            android:textColor="#000000"
             android:textSize="13sp" />
 
     </LinearLayout>
@@ -114,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="删除"
-            android:textColor="#ff5a72b9"
+            android:textColor="#000000"
             android:textSize="13sp" />
 
     </LinearLayout>

@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
                 new int[]{-android.R.attr.state_checked},
                 new int[]{android.R.attr.state_checked},
                 new int[]{android.R.attr.state_checked},
-                new int[]{android.R.attr.state_checked}
         };
 
         int[] colors = new int[]{getResources().getColor(R.color.black),
@@ -67,16 +66,16 @@ public class MainActivity extends AppCompatActivity {
                     case 1:
                         return new HomeFragment();
                     case 2:
-                        return new HomeFragment();
-                    case 3:
                         return new MyFragment();
+//                    case 3:
+//                        return new MyFragment();
                 }
                 return null;
             }
 
             @Override
             public int getItemCount() {
-                return 4;
+                return 3;
             }
         });
 
@@ -91,26 +90,26 @@ public class MainActivity extends AppCompatActivity {
                     case 0:
                         bottomNavigationView.getMenu().getItem(position).setIcon(R.mipmap.mall_index_checked);
                         bottomNavigationView.getMenu().getItem(1).setIcon(R.mipmap.category);
-                        bottomNavigationView.getMenu().getItem(2).setIcon(R.mipmap.order);
-                        bottomNavigationView.getMenu().getItem(3).setIcon(R.mipmap.my);
+//                        bottomNavigationView.getMenu().getItem(2).setIcon(R.mipmap.order);
+                        bottomNavigationView.getMenu().getItem(2).setIcon(R.mipmap.my);
                         break;
                     case 1:
                         bottomNavigationView.getMenu().getItem(position).setIcon(R.mipmap.category_checked);
                         bottomNavigationView.getMenu().getItem(0).setIcon(R.mipmap.mall_index);
-                        bottomNavigationView.getMenu().getItem(2).setIcon(R.mipmap.order);
-                        bottomNavigationView.getMenu().getItem(3).setIcon(R.mipmap.my);
+//                        bottomNavigationView.getMenu().getItem(2).setIcon(R.mipmap.order);
+                        bottomNavigationView.getMenu().getItem(2).setIcon(R.mipmap.my);
                         break;
+//                    case 2:
+//                        bottomNavigationView.getMenu().getItem(position).setIcon(R.mipmap.order_checked);
+//                        bottomNavigationView.getMenu().getItem(0).setIcon(R.mipmap.mall_index);
+//                        bottomNavigationView.getMenu().getItem(1).setIcon(R.mipmap.category);
+//                        bottomNavigationView.getMenu().getItem(3).setIcon(R.mipmap.my);
+//                        break;
                     case 2:
-                        bottomNavigationView.getMenu().getItem(position).setIcon(R.mipmap.order_checked);
-                        bottomNavigationView.getMenu().getItem(0).setIcon(R.mipmap.mall_index);
-                        bottomNavigationView.getMenu().getItem(1).setIcon(R.mipmap.category);
-                        bottomNavigationView.getMenu().getItem(3).setIcon(R.mipmap.my);
-                        break;
-                    case 3:
                         bottomNavigationView.getMenu().getItem(position).setIcon(R.mipmap.my_checked);
                         bottomNavigationView.getMenu().getItem(0).setIcon(R.mipmap.mall_index);
                         bottomNavigationView.getMenu().getItem(1).setIcon(R.mipmap.category);
-                        bottomNavigationView.getMenu().getItem(2).setIcon(R.mipmap.order);
+//                        bottomNavigationView.getMenu().getItem(2).setIcon(R.mipmap.order);
                         break;
                 }
             }
@@ -125,29 +124,29 @@ public class MainActivity extends AppCompatActivity {
                         viewPager2.setCurrentItem(0, false);
                         menuItem.setIcon(R.mipmap.mall_index_checked);
                         bottomNavigationView.getMenu().getItem(1).setIcon(R.mipmap.category);
-                        bottomNavigationView.getMenu().getItem(2).setIcon(R.mipmap.order);
-                        bottomNavigationView.getMenu().getItem(3).setIcon(R.mipmap.my);
+//                        bottomNavigationView.getMenu().getItem(2).setIcon(R.mipmap.order);
+                        bottomNavigationView.getMenu().getItem(2).setIcon(R.mipmap.my);
                         return true;
                     case R.id.category:
                         viewPager2.setCurrentItem(1, false);
                         menuItem.setIcon(R.mipmap.category_checked);
                         bottomNavigationView.getMenu().getItem(0).setIcon(R.mipmap.mall_index);
-                        bottomNavigationView.getMenu().getItem(2).setIcon(R.mipmap.order);
-                        bottomNavigationView.getMenu().getItem(3).setIcon(R.mipmap.my);
+//                        bottomNavigationView.getMenu().getItem(2).setIcon(R.mipmap.order);
+                        bottomNavigationView.getMenu().getItem(2).setIcon(R.mipmap.my);
                         break;
-                    case R.id.order:
-                        viewPager2.setCurrentItem(2, false);
-                        menuItem.setIcon(R.mipmap.order_checked);
-                        bottomNavigationView.getMenu().getItem(0).setIcon(R.mipmap.mall_index);
-                        bottomNavigationView.getMenu().getItem(1).setIcon(R.mipmap.category);
-                        bottomNavigationView.getMenu().getItem(3).setIcon(R.mipmap.my);
-                        return true;
+//                    case R.id.order:
+//                        viewPager2.setCurrentItem(2, false);
+//                        menuItem.setIcon(R.mipmap.order_checked);
+//                        bottomNavigationView.getMenu().getItem(0).setIcon(R.mipmap.mall_index);
+//                        bottomNavigationView.getMenu().getItem(1).setIcon(R.mipmap.category);
+//                        bottomNavigationView.getMenu().getItem(3).setIcon(R.mipmap.my);
+//                        return true;
                     case R.id.my:
-                        viewPager2.setCurrentItem(3, false);
+                        viewPager2.setCurrentItem(2, false);
                         menuItem.setIcon(R.mipmap.my_checked);
                         bottomNavigationView.getMenu().getItem(0).setIcon(R.mipmap.mall_index);
                         bottomNavigationView.getMenu().getItem(1).setIcon(R.mipmap.category);
-                        bottomNavigationView.getMenu().getItem(2).setIcon(R.mipmap.order);
+//                        bottomNavigationView.getMenu().getItem(2).setIcon(R.mipmap.order);
                         return true;
 
                 }
