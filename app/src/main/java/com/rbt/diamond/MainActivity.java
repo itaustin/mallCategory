@@ -14,6 +14,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.rbt.diamond.fragment.CategoryFragment;
 import com.rbt.diamond.fragment.MyFragment;
 import com.rbt.diamond.fragment.HomeFragment;
 
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     case 0:
                         return new HomeFragment();
                     case 1:
-                        return new HomeFragment();
+                        return new CategoryFragment();
                     case 2:
                         return new MyFragment();
 //                    case 3:
