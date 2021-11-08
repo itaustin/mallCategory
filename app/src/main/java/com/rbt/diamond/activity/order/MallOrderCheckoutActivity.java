@@ -2,6 +2,7 @@ package com.rbt.diamond.activity.order;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,12 +19,22 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
+import com.luck.picture.lib.PictureSelector;
+import com.luck.picture.lib.config.PictureMimeType;
+import com.luck.picture.lib.entity.LocalMedia;
+import com.luck.picture.lib.listener.OnResultCallbackListener;
 import com.lxj.easyadapter.EasyAdapter;
 import com.lxj.easyadapter.ViewHolder;
+import com.lxj.xpopup.XPopup;
+import com.lxj.xpopup.core.BasePopupView;
+import com.lxj.xpopup.interfaces.OnConfirmListener;
+import com.rbt.diamond.MainActivity;
 import com.rbt.diamond.R;
 import com.rbt.diamond.activity.address.AddressManagerActivity;
 import com.rbt.diamond.public_bean.OrderCheckoutBean;
 import com.rbt.diamond.public_bean.PayBean;
+import com.rbt.diamond.public_bean.UploadImageBean;
+import com.rbt.diamond.util.GlideEngine;
 import com.rbt.diamond.util.Util;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -32,6 +43,9 @@ import org.qinsong.lib.pay.PAY_TYPE;
 import org.qinsong.lib.pay.PayAPI;
 import org.qinsong.lib.pay.PayCallback;
 import org.qinsong.lib.pay.ali.AliPayInfo;
+
+import java.io.File;
+import java.util.List;
 
 import okhttp3.Call;
 
@@ -48,6 +62,8 @@ public class MallOrderCheckoutActivity extends AppCompatActivity {
     protected ConstraintLayout address_manager;
 
     protected Button pay_now;
+
+    protected File pay_image = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -166,61 +182,133 @@ public class MallOrderCheckoutActivity extends AppCompatActivity {
         pay_now.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                OkHttpUtils
-                        .post()
-                        .url(Util.url + "?s=/api/order/buyNowAlipayForAndroid")
-                        .addParams("delivery", String.valueOf(intent.getIntExtra("delivery", 0)))
-                        .addParams("shop_id", String.valueOf(intent.getIntExtra("shop_id", 0)))
-                        .addParams("coupon_id", String.valueOf(intent.getIntExtra("coupon_id", 0)))
-                        .addParams("is_use_points", String.valueOf(intent.getIntExtra("is_use_points", 0)))
-                        .addParams("goods_id", String.valueOf(intent.getIntExtra("goods_id", 0)))
-                        .addParams("goods_num", String.valueOf(intent.getIntExtra("goods_num", 0)))
-                        .addParams("goods_sku_id", String.valueOf(intent.getStringExtra("goods_sku_id")))
-                        .addParams("wxapp_id", String.valueOf(intent.getIntExtra("wxapp_id", 0)))
-                        .addParams("token", Util.getToken(MallOrderCheckoutActivity.this))
-                        .build()
-                        .execute(new StringCallback() {
-                            @Override
-                            public void onError(Call call, Exception e, int id) {
-                                System.out.println(e.getMessage());
-                            }
+                if(pay_image == null){
+                    new XPopup.Builder(MallOrderCheckoutActivity.this)
+                            .asConfirm("温馨提示", "提交订单前您需要上传支付凭证/截图。", new OnConfirmListener() {
+                                @Override
+                                public void onConfirm() {
+                                    PictureSelector.create(MallOrderCheckoutActivity.this)
+                                            .openGallery(PictureMimeType.ofImage())
+                                            .imageEngine(GlideEngine.createGlideEngine())// 外部传入图片加载引擎，必传项
+                                            .isCamera(false)
+                                            .isEnablePreviewAudio(false)
+                                            .maxSelectNum(1)
+                                            .minSelectNum(1)
+                                            .hideBottomControls(false)// 是否显示uCrop工具栏，默认不显示
+                                            .isEnableCrop(true)// 是否裁剪
+                                            .isOriginalImageControl(true)
+                                            .isWeChatStyle(true)// 是否开启微信图片选择风格
+                                            .isUseCustomCamera(true)// 是否使用自定义相机
+                                            .forResult(new OnResultCallbackListener<LocalMedia>() {
+                                                @Override
+                                                public void onResult(List<LocalMedia> result) {
+                                                    System.out.println(result.toString());
+                                                    for (LocalMedia media : result){
+                                                        BitmapFactory.Options options = new BitmapFactory.Options();
+                                                        options.inJustDecodeBounds = true;
+                                                        // Bitmap bitmap = BitmapFactory.decodeFile(media.isCut() ? media.getCutPath() : media.getRealPath());
+                                                        pay_image = new File(media.isCut() ? media.getCutPath() : media.getRealPath());
+                                                        BasePopupView basePopupView = new XPopup.Builder(MallOrderCheckoutActivity.this)
+                                                                .dismissOnBackPressed(false)
+                                                                .dismissOnTouchOutside(false)
+                                                                .asLoading("处理中...")
+                                                                .show();
+                                                        System.out.println("start_image");
+                                                        System.out.println(pay_image.getName());
+                                                        System.out.println(pay_image.getPath());
+                                                        OkHttpUtils
+                                                                .post()
+                                                                .addFile("iFile", pay_image.getName(), pay_image)
+                                                                .url(Util.url + "api/upload/image")
+                                                                .addParams("token", Util.getToken(MallOrderCheckoutActivity.this))
+                                                                .addParams("wxapp_id", "10001")
+                                                                .build()
+                                                                .execute(new StringCallback() {
+                                                                    @Override
+                                                                    public void onError(Call call, Exception e, int id) {
+                                                                        System.out.println("Exception：" + e.getMessage());
+                                                                    }
 
-                            @Override
-                            public void onResponse(String response, int id) {
-                                System.out.println(response);
-                                Gson gson = new Gson();
-                                PayBean payBean = gson.fromJson(response, PayBean.class);
-                                if(payBean.getCode() == 2){
-                                    Util.showToastSuccess(MallOrderCheckoutActivity.this, "积分支付成功");
-                                    finish();
-                                } else if(payBean.getCode() == 0) {
-                                    Util.showToastError(MallOrderCheckoutActivity.this, payBean.getMsg());
-                                } else {
-                                    AliPayInfo aliPayInfo = new AliPayInfo();
-                                    aliPayInfo.payParam = payBean.getData();
-                                    PayAPI.get(MallOrderCheckoutActivity.this, PAY_TYPE.ALIPAY).pay(aliPayInfo, new PayCallback() {
-                                        @Override
-                                        public void onComplete(PAY_TYPE payType, String result) {
-                                            //同步支付结果成功
-                                            Util.showToastSuccess(MallOrderCheckoutActivity.this, "支付成功");
-                                            finish();
-                                        }
+                                                                    @Override
+                                                                    public void onResponse(String response, int id) {
+                                                                        System.out.println(response);
+                                                                        Gson gson = new Gson();
+                                                                        UploadImageBean imageBean = gson.fromJson(response, UploadImageBean.class);
+                                                                        System.out.println("file_id：" + imageBean.getData().getFile_id());
+                                                                        OkHttpUtils
+                                                                                .post()
+                                                                                .url(Util.url + "?s=/api/order/buyNowAlipayForAndroid")
+                                                                                .addParams("delivery", String.valueOf(intent.getIntExtra("delivery", 0)))
+                                                                                .addParams("shop_id", String.valueOf(intent.getIntExtra("shop_id", 0)))
+                                                                                .addParams("coupon_id", String.valueOf(intent.getIntExtra("coupon_id", 0)))
+                                                                                .addParams("is_use_points", String.valueOf(intent.getIntExtra("is_use_points", 0)))
+                                                                                .addParams("goods_id", String.valueOf(intent.getIntExtra("goods_id", 0)))
+                                                                                .addParams("goods_num", String.valueOf(intent.getIntExtra("goods_num", 0)))
+                                                                                .addParams("goods_sku_id", String.valueOf(intent.getStringExtra("goods_sku_id")))
+                                                                                .addParams("audit_image_id", String.valueOf(imageBean.getData().getFile_id()))
+                                                                                .addParams("wxapp_id", String.valueOf(intent.getIntExtra("wxapp_id", 0)))
+                                                                                .addParams("token", Util.getToken(MallOrderCheckoutActivity.this))
+                                                                                .build()
+                                                                                .execute(new StringCallback() {
+                                                                                    @Override
+                                                                                    public void onError(Call call, Exception e, int id) {
+                                                                                        System.out.println(e.getMessage());
+                                                                                    }
 
-                                        @Override
-                                        public void onFail(PAY_TYPE payType, String msg) {
-                                            finish();
-                                            System.out.println("支付失败");
-                                        }
+                                                                                    @Override
+                                                                                    public void onResponse(String response, int id) {
+                                                                                        System.out.println(response);
+                                                                                        basePopupView.smartDismiss();
+                                                                                        Gson gson = new Gson();
+                                                                                        PayBean payBean = gson.fromJson(response, PayBean.class);
+                                                                                        if(payBean.getCode() == 2){
+                                                                                            Util.showToastSuccess(MallOrderCheckoutActivity.this, "积分支付成功");
+                                                                                            finish();
+                                                                                        } else if(payBean.getCode() == 3) {
+                                                                                            Util.showToastSuccess(MallOrderCheckoutActivity.this, payBean.getMsg());
+                                                                                            startActivity(new Intent(MallOrderCheckoutActivity.this, MainActivity.class));
+                                                                                        } else if(payBean.getCode() == 1) {
+                                                                                            Util.showToastSuccess(MallOrderCheckoutActivity.this, "购买成功，请耐心等待积分到账。");
+                                                                                        } else {
+                                                                                            AliPayInfo aliPayInfo = new AliPayInfo();
+                                                                                            aliPayInfo.payParam = payBean.getData();
+                                                                                            PayAPI.get(MallOrderCheckoutActivity.this, PAY_TYPE.ALIPAY).pay(aliPayInfo, new PayCallback() {
+                                                                                                @Override
+                                                                                                public void onComplete(PAY_TYPE payType, String result) {
+                                                                                                    //同步支付结果成功
+                                                                                                    Util.showToastSuccess(MallOrderCheckoutActivity.this, "支付成功");
+                                                                                                    finish();
+                                                                                                }
 
-                                        @Override
-                                        public void onCancel(PAY_TYPE payType) {
-                                            finish();
-                                            System.out.println("支付取消");
-                                        }
-                                    });
+                                                                                                @Override
+                                                                                                public void onFail(PAY_TYPE payType, String msg) {
+                                                                                                    finish();
+                                                                                                    System.out.println("支付失败");
+                                                                                                }
+
+                                                                                                @Override
+                                                                                                public void onCancel(PAY_TYPE payType) {
+                                                                                                    finish();
+                                                                                                    System.out.println("支付取消");
+                                                                                                }
+                                                                                            });
+                                                                                        }
+                                                                                    }
+                                                                                });
+                                                                    }
+                                                                });
+
+                                                    }
+                                                }
+
+                                                @Override
+                                                public void onCancel() {
+
+                                                }
+                                            });
                                 }
-                            }
-                        });
+                            }).show();
+                }
             }
         });
     }

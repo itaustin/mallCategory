@@ -98,8 +98,8 @@ public class SelectSkuPopupView extends BottomPopupView {
     protected void initView(){
         title_recycler = findViewById(R.id.title_recycler);
         buy_now = findViewById(R.id.buy_now);
-        add_cart = findViewById(R.id.add_cart);
-        start_cart = findViewById(R.id.start_cart);
+//        add_cart = findViewById(R.id.add_cart);
+//        start_cart = findViewById(R.id.start_cart);
 
         sku_price = findViewById(R.id.sku_price);
         stock = findViewById(R.id.stock);
@@ -125,9 +125,9 @@ public class SelectSkuPopupView extends BottomPopupView {
             }
         });
 
-        if(goodsDataBean.getDetail().getCategory_id() == 10006){
-            add_cart.setVisibility(GONE);
-        }
+//        if(goodsDataBean.getDetail().getCategory_id() == 10006){
+//            add_cart.setVisibility(GONE);
+//        }
 
         title_recycler.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
 
@@ -282,104 +282,104 @@ public class SelectSkuPopupView extends BottomPopupView {
             }
         });
 
-        add_cart.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(goods_sku_data.size() < sku_first_num){
-                    Util.showToastError(context, "请选择规格");
-                } else {
-                    goods_sku_id = "";
-                    for (Integer ii : goods_sku_data) {
-                        goods_sku_id += ii + "_";
-                    }
-                    if(!TextUtils.isEmpty(goods_sku_id)) {
-                        goods_sku_id = goods_sku_id.substring(0, goods_sku_id.length()-1);
-                        // 记得判断库存
-                        if(specSkuData.getSpec_attr().size() == goods_sku_data.size()){
-                            for (GoodsDetailBean.DataBean.SpecDataBean.SpecListBean bean : specSkuData.getSpec_list()) {
-                                if(bean.getSpec_sku_id().equals(goods_sku_id)){
-                                    if(bean.getForm().getStock_num() == 0){
-                                        Util.showToastError(context, "库存不足，请选择其他规格。");
-                                    } else {
-                                        // 检测商品数量
-                                        if(goods_number == 0){
-                                            Util.showToastError(context, "请选择商品数量");
-                                        } else {
-                                            // 开始加入购物车
-                                            OkHttpUtils
-                                                    .post()
-                                                    .url(Util.url + "?s=/api/cart/add")
-                                                    .addParams("goods_id", String.valueOf(goods_id))
-                                                    .addParams("goods_num", String.valueOf(goods_number))
-                                                    .addParams("goods_sku_id", TextUtils.isEmpty(goods_sku_id) ? String.valueOf(0) : goods_sku_id)
-                                                    .addParams("wxapp_id", String.valueOf(10001))
-                                                    .addParams("token", Util.getToken(context))
-                                                    .build()
-                                                    .execute(new StringCallback() {
-                                                        @Override
-                                                        public void onError(Call call, Exception e, int id) {
+//        add_cart.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(goods_sku_data.size() < sku_first_num){
+//                    Util.showToastError(context, "请选择规格");
+//                } else {
+//                    goods_sku_id = "";
+//                    for (Integer ii : goods_sku_data) {
+//                        goods_sku_id += ii + "_";
+//                    }
+//                    if(!TextUtils.isEmpty(goods_sku_id)) {
+//                        goods_sku_id = goods_sku_id.substring(0, goods_sku_id.length()-1);
+//                        // 记得判断库存
+//                        if(specSkuData.getSpec_attr().size() == goods_sku_data.size()){
+//                            for (GoodsDetailBean.DataBean.SpecDataBean.SpecListBean bean : specSkuData.getSpec_list()) {
+//                                if(bean.getSpec_sku_id().equals(goods_sku_id)){
+//                                    if(bean.getForm().getStock_num() == 0){
+//                                        Util.showToastError(context, "库存不足，请选择其他规格。");
+//                                    } else {
+//                                        // 检测商品数量
+//                                        if(goods_number == 0){
+//                                            Util.showToastError(context, "请选择商品数量");
+//                                        } else {
+//                                            // 开始加入购物车
+//                                            OkHttpUtils
+//                                                    .post()
+//                                                    .url(Util.url + "?s=/api/cart/add")
+//                                                    .addParams("goods_id", String.valueOf(goods_id))
+//                                                    .addParams("goods_num", String.valueOf(goods_number))
+//                                                    .addParams("goods_sku_id", TextUtils.isEmpty(goods_sku_id) ? String.valueOf(0) : goods_sku_id)
+//                                                    .addParams("wxapp_id", String.valueOf(10001))
+//                                                    .addParams("token", Util.getToken(context))
+//                                                    .build()
+//                                                    .execute(new StringCallback() {
+//                                                        @Override
+//                                                        public void onError(Call call, Exception e, int id) {
+//
+//                                                        }
+//
+//                                                        @Override
+//                                                        public void onResponse(String response, int id) {
+//                                                            Gson gson = new Gson();
+//                                                            AddCartBean bean = gson.fromJson(response, AddCartBean.class);
+//                                                            Util.showToastSuccess(context, bean.getMsg());
+//                                                        }
+//                                                    });
+//                                        }
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    } else {
+//                        goods_sku_id = "";
+//                        if(goodsDataBean.getDetail().getGoods_sku().getStock_num() == 0) {
+//                            Util.showToastError(context, "库存不足，请选择其他规格。");
+//                        } else {
+//                            // 检测商品数量
+//                            if(goods_number == 0){
+//                                Util.showToastError(context, "请选择商品数量");
+//                            } else {
+//                                // 开始加入购物车
+//                                OkHttpUtils
+//                                        .post()
+//                                        .url(Util.url + "?s=/api/cart/add")
+//                                        .addParams("goods_id", String.valueOf(goods_id))
+//                                        .addParams("goods_num", String.valueOf(goods_number))
+//                                        .addParams("goods_sku_id", TextUtils.isEmpty(goods_sku_id) ? String.valueOf(0) : goods_sku_id)
+//                                        .addParams("wxapp_id", String.valueOf(10001))
+//                                        .addParams("token", Util.getToken(context))
+//                                        .build()
+//                                        .execute(new StringCallback() {
+//                                            @Override
+//                                            public void onError(Call call, Exception e, int id) {
+//
+//                                            }
+//
+//                                            @Override
+//                                            public void onResponse(String response, int id) {
+//                                                Gson gson = new Gson();
+//                                                AddCartBean bean = gson.fromJson(response, AddCartBean.class);
+//                                                Util.showToastSuccess(context, bean.getMsg());
+//                                            }
+//                                        });
+//                            }
+//                        }
+//                    }
+//
+//                }
+//            }
+//        });
 
-                                                        }
-
-                                                        @Override
-                                                        public void onResponse(String response, int id) {
-                                                            Gson gson = new Gson();
-                                                            AddCartBean bean = gson.fromJson(response, AddCartBean.class);
-                                                            Util.showToastSuccess(context, bean.getMsg());
-                                                        }
-                                                    });
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    } else {
-                        goods_sku_id = "";
-                        if(goodsDataBean.getDetail().getGoods_sku().getStock_num() == 0) {
-                            Util.showToastError(context, "库存不足，请选择其他规格。");
-                        } else {
-                            // 检测商品数量
-                            if(goods_number == 0){
-                                Util.showToastError(context, "请选择商品数量");
-                            } else {
-                                // 开始加入购物车
-                                OkHttpUtils
-                                        .post()
-                                        .url(Util.url + "?s=/api/cart/add")
-                                        .addParams("goods_id", String.valueOf(goods_id))
-                                        .addParams("goods_num", String.valueOf(goods_number))
-                                        .addParams("goods_sku_id", TextUtils.isEmpty(goods_sku_id) ? String.valueOf(0) : goods_sku_id)
-                                        .addParams("wxapp_id", String.valueOf(10001))
-                                        .addParams("token", Util.getToken(context))
-                                        .build()
-                                        .execute(new StringCallback() {
-                                            @Override
-                                            public void onError(Call call, Exception e, int id) {
-
-                                            }
-
-                                            @Override
-                                            public void onResponse(String response, int id) {
-                                                Gson gson = new Gson();
-                                                AddCartBean bean = gson.fromJson(response, AddCartBean.class);
-                                                Util.showToastSuccess(context, bean.getMsg());
-                                            }
-                                        });
-                            }
-                        }
-                    }
-
-                }
-            }
-        });
-
-        start_cart.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
+//        start_cart.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
 //                Intent cartIntent = new Intent();
 //                context.startActivity(cartIntent);
-            }
-        });
+//            }
+//        });
 
     }
 

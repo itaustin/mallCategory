@@ -89,6 +89,8 @@ public class OrderBean {
             private String coupon_money;
             private String points_money;
             private int points_num;
+            private int audit_image_id;
+            private int is_audit;
             private String pay_price;
             private UpdatePriceBean update_price;
             private String buyer_remark;
@@ -182,6 +184,22 @@ public class OrderBean {
 
             public void setPoints_num(int points_num) {
                 this.points_num = points_num;
+            }
+
+            public int getAudit_image_id() {
+                return audit_image_id;
+            }
+
+            public void setAudit_image_id(int audit_image_id) {
+                this.audit_image_id = audit_image_id;
+            }
+
+            public int getIs_audit() {
+                return is_audit;
+            }
+
+            public void setIs_audit(int is_audit) {
+                this.is_audit = is_audit;
             }
 
             public String getPay_price() {

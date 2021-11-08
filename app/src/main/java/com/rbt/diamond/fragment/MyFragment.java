@@ -184,8 +184,8 @@ public class MyFragment extends Fragment {
         binding.margin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent teamIntent = new Intent(requireActivity(), MyTeamActivity.class);
-                startActivity(teamIntent);
+//                Intent teamIntent = new Intent(requireActivity(), MyTeamActivity.class);
+//                startActivity(teamIntent);
             }
         });
 

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -255,6 +256,13 @@ public class AllOrderFragment extends Fragment implements View.OnClickListener {
                                             viewHolder.getView(R.id.view_express).setVisibility(View.GONE);
                                             viewHolder.getView(R.id.cancel).setVisibility(View.VISIBLE);
                                         }
+                                    }
+
+                                    if(dataBean.getIs_audit() == 0 && dataBean.getAudit_image_id() > 0){
+                                        // 未审核
+                                        Button button = viewHolder.getView(R.id.pay_now);
+                                        button.setText("等待后台审核");
+                                        button.setEnabled(false);
                                     }
 
                                     viewHolder.getView(R.id.pay_now).setOnClickListener(new View.OnClickListener() {
