@@ -2,6 +2,7 @@ package com.rbt.diamond.public_adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,10 +23,12 @@ import java.util.List;
 public class CategoryGoodsAdapter extends RecyclerView.Adapter<CategoryGoodsAdapter.ViewHolder> {
     protected List<GoodsListBean.DataBeanX.ListBean.DataBean> list = new ArrayList<>();
     protected Context context;
+    protected int type = 0;
 
-    public CategoryGoodsAdapter(List<GoodsListBean.DataBeanX.ListBean.DataBean> list, Context context) {
+    public CategoryGoodsAdapter(List<GoodsListBean.DataBeanX.ListBean.DataBean> list, Context context, int type) {
         this.list = list;
         this.context = context;
+        this.type = type;
     }
 
     public void addData(List<GoodsListBean.DataBeanX.ListBean.DataBean> list) {
@@ -46,6 +49,10 @@ public class CategoryGoodsAdapter extends RecyclerView.Adapter<CategoryGoodsAdap
         holder.binding.goodsName.setText(data.getGoods_name());
         Glide.with(context).load(data.getGoods_image()).into(holder.binding.goodsImage);
         holder.binding.goodsPrice.setText(data.getGoods_min_price());
+
+        holder.binding.linePrice.setText(data.getGoods_sku().getLine_price());
+        holder.binding.linePrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+        holder.binding.linePrice.getPaint().setAntiAlias(true);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.home.SearchActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout20"
+            android:layout_width="283dp"
+            android:layout_height="35dp"
+            android:background="#F5F5F5"
+            android:layout_marginStart="15.5dp"
+            android:layout_marginTop="24.5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageView14"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:src="@mipmap/search"
+                android:layout_marginStart="6.5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/search_content"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="11.5dp"
+                android:background="@null"
+                android:hint="请输入商品名称或货号"
+                android:textColor="#ff333333"
+                android:textColorHint="#ff333333"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/imageView14"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="取消"
+            android:textColor="#ffcab369"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout20"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout20" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="37.5dp"
+            android:text="最近搜索"
+            android:textColor="#ff000000"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayout20"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout20" />
+
+        <ImageView
+            android:id="@+id/delete"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:src="@mipmap/delete"
+            app:layout_constraintBottom_toBottomOf="@+id/textView14"
+            app:layout_constraintEnd_toEndOf="@+id/cancel"
+            app:layout_constraintTop_toTopOf="@+id/textView14" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recent_search"
+            android:layout_width="0dp"
+            android:layout_marginTop="18dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/delete"
+            app:layout_constraintStart_toStartOf="@+id/textView14"
+            app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

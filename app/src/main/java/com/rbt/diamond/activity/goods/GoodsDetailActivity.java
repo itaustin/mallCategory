@@ -163,7 +163,7 @@ public class GoodsDetailActivity extends AppCompatActivity implements View.OnCli
                         binding.buyNow.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                SelectSkuPopupView popupView = new SelectSkuPopupView(GoodsDetailActivity.this, bean.getData().getSpecData(), bean.getData().getDetail().getGoods_image(), bean.getData().getDetail().getGoods_id(), bean.getData());
+                                SelectSkuPopupView popupView = new SelectSkuPopupView(GoodsDetailActivity.this, bean.getData().getSpecData(), bean.getData().getDetail().getGoods_image(), bean.getData().getDetail().getGoods_id(), bean.getData(), bean.getData().getDetail().getCategory_id());
                                 new XPopup.Builder(GoodsDetailActivity.this)
                                         .asCustom(popupView)
                                         .show();
@@ -173,7 +173,7 @@ public class GoodsDetailActivity extends AppCompatActivity implements View.OnCli
                         binding.addCart.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                SelectSkuPopupView popupView = new SelectSkuPopupView(GoodsDetailActivity.this, bean.getData().getSpecData(), bean.getData().getDetail().getGoods_image(), bean.getData().getDetail().getGoods_id(), bean.getData());
+                                SelectSkuPopupView popupView = new SelectSkuPopupView(GoodsDetailActivity.this, bean.getData().getSpecData(), bean.getData().getDetail().getGoods_image(), bean.getData().getDetail().getGoods_id(), bean.getData(), bean.getData().getDetail().getCategory_id());
                                 new XPopup.Builder(GoodsDetailActivity.this)
                                         .asCustom(popupView)
                                         .show();

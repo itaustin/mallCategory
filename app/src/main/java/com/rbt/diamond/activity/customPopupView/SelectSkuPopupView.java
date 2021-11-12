@@ -64,13 +64,16 @@ public class SelectSkuPopupView extends BottomPopupView {
 
     protected LinearLayout start_cart;
 
-    public SelectSkuPopupView(@NonNull Context context, GoodsDetailBean.DataBean.SpecDataBean specSkuData, String goods_image, int goods_id, GoodsDetailBean.DataBean goodsDataBean) {
+    protected int category_id = 0;
+
+    public SelectSkuPopupView(@NonNull Context context, GoodsDetailBean.DataBean.SpecDataBean specSkuData, String goods_image, int goods_id, GoodsDetailBean.DataBean goodsDataBean, int category_id) {
         super(context);
         this.context = context;
         this.specSkuData = specSkuData;
         this.goods_image = goods_image;
         this.goods_id = goods_id;
         this.goodsDataBean = goodsDataBean;
+        this.category_id = category_id;
 
         if(specSkuData != null) {
             this.sku_first_num = specSkuData.getSpec_attr().size();
@@ -107,12 +110,17 @@ public class SelectSkuPopupView extends BottomPopupView {
         add = findViewById(R.id.add);
         goods_num = findViewById(R.id.goods_num);
 
+
         sub.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(goods_number > 1){
-                    goods_number--;
-                    goods_num.setText(String.valueOf(goods_number));
+                if(category_id == 10001){
+                    Util.showToastSuccess(context, "报单商城最多值支持购买一个。");
+                } else {
+                    if (goods_number > 1) {
+                        goods_number--;
+                        goods_num.setText(String.valueOf(goods_number));
+                    }
                 }
             }
         });
@@ -120,8 +128,12 @@ public class SelectSkuPopupView extends BottomPopupView {
         add.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                goods_number++;
-                goods_num.setText(String.valueOf(goods_number));
+                if(category_id == 10001){
+                    Util.showToastSuccess(context, "报单商城最多值支持购买一个。");
+                } else {
+                    goods_number++;
+                    goods_num.setText(String.valueOf(goods_number));
+                }
             }
         });
 

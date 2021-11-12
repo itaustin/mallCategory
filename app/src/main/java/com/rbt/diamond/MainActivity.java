@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     protected void mall() {
         viewPager2 = findViewById(R.id.viewPage2);
         // 控制左右滑动切换
-        // viewPager2.setUserInputEnabled(false);
+        viewPager2.setUserInputEnabled(false);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         int[][] states = new int[][]{

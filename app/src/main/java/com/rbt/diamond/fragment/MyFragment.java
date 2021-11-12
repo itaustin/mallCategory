@@ -28,6 +28,8 @@ import com.rbt.diamond.R;
 import com.rbt.diamond.activity.address.AddressManagerActivity;
 import com.rbt.diamond.activity.center.CertificateActivity;
 import com.rbt.diamond.activity.center.InviteFriendsActivity;
+import com.rbt.diamond.activity.my.GoldenCouponActivity;
+import com.rbt.diamond.activity.my.MyBankAccountActivity;
 import com.rbt.diamond.activity.my.MyTeamActivity;
 import com.rbt.diamond.activity.my.SettingActivity;
 import com.rbt.diamond.activity.order.OrderActivity;
@@ -35,6 +37,7 @@ import com.rbt.diamond.activity.passport.LoginActivity;
 import com.rbt.diamond.activity.points.MyPointsActivity;
 import com.rbt.diamond.databinding.FragmentMyBinding;
 import com.rbt.diamond.public_bean.MyViewItemBean;
+import com.rbt.diamond.public_bean.ResultMsgBean;
 import com.rbt.diamond.public_bean.UserInfoBean;
 import com.rbt.diamond.util.UpdateAppHttpUtil;
 import com.rbt.diamond.util.Util;
@@ -78,7 +81,7 @@ public class MyFragment extends Fragment {
         String token = sharedPreferences.getString("token", "");
         if (TextUtils.isEmpty(token)) {
             binding.nickName.setText("点击登录");
-            binding.nickName.setTextColor(Color.parseColor("#ff0000"));
+            binding.nickName.setTextColor(Color.parseColor("#000000"));
             binding.nickName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -119,7 +122,42 @@ public class MyFragment extends Fragment {
                             } else if(userInfoBean.getCode() == 1){
                                 initLayoutManager();
                                 binding.nickName.setText(userInfoBean.getData().getUsername());
-//                                margin_money.setText(userInfoBean.getData().getMargin_money());
+                                if(userInfoBean.getData().getLevel() == -1){
+                                    binding.gradeLayout.setVisibility(View.GONE);
+                                    binding.gradeName.setText("");
+                                    binding.levelLayout.setVisibility(View.GONE);
+                                    binding.levelText.setText("");
+                                } else if(userInfoBean.getData().getLevel() == 0){
+                                    binding.gradeLayout.setVisibility(View.VISIBLE);
+                                    binding.gradeName.setText("普通会员");
+                                    binding.levelLayout.setVisibility(View.GONE);
+                                } else if(userInfoBean.getData().getLevel() == 1){
+                                    binding.gradeLayout.setVisibility(View.VISIBLE);
+                                    binding.gradeName.setText("lv.1");
+                                    binding.levelLayout.setVisibility(View.VISIBLE);
+                                    binding.levelText.setText("1级");
+                                } else if(userInfoBean.getData().getLevel() == 2){
+                                    binding.gradeLayout.setVisibility(View.VISIBLE);
+                                    binding.gradeName.setText("lv.2");
+                                    binding.levelLayout.setVisibility(View.VISIBLE);
+                                    binding.levelText.setText("2级");
+                                } else if(userInfoBean.getData().getLevel() == 3){
+                                    binding.gradeLayout.setVisibility(View.VISIBLE);
+                                    binding.gradeName.setText("lv.3");
+                                    binding.levelLayout.setVisibility(View.VISIBLE);
+                                    binding.levelText.setText("3级");
+                                } else if(userInfoBean.getData().getLevel() == 4){
+                                    binding.gradeLayout.setVisibility(View.VISIBLE);
+                                    binding.gradeName.setText("lv.4");
+                                    binding.levelLayout.setVisibility(View.VISIBLE);
+                                    binding.levelText.setText("4级");
+                                } else if(userInfoBean.getData().getLevel() == 5){
+                                    binding.gradeLayout.setVisibility(View.VISIBLE);
+                                    binding.gradeName.setText("lv.5");
+                                    binding.levelLayout.setVisibility(View.VISIBLE);
+                                    binding.levelText.setText("5级");
+                                }
+
                                 // 暂时显示积分
                             } else {
                                 Util.showToastError(requireActivity(), userInfoBean.getMsg());
@@ -158,6 +196,11 @@ public class MyFragment extends Fragment {
         my_bank_card.setName("我的银行卡");
         list.add(my_bank_card);
 
+        MyViewItemBean.DataBean golden_coupon = new MyViewItemBean.DataBean();
+        golden_coupon.setEng_name("golden_coupon");
+        golden_coupon.setName("黄金置换");
+        list.add(golden_coupon);
+
         MyViewItemBean.DataBean certificate = new MyViewItemBean.DataBean();
         certificate.setEng_name("certificate");
         certificate.setName("实名认证");
@@ -184,8 +227,8 @@ public class MyFragment extends Fragment {
         binding.margin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent teamIntent = new Intent(requireActivity(), MyTeamActivity.class);
-//                startActivity(teamIntent);
+                Intent teamIntent = new Intent(requireActivity(), MyTeamActivity.class);
+                startActivity(teamIntent);
             }
         });
 
@@ -195,6 +238,15 @@ public class MyFragment extends Fragment {
                 Intent settingIntent = new Intent(requireActivity(), SettingActivity.class);
                 settingIntent.putExtra("mobile_phone", userInfoBean.getData().getUsername());
                 startActivity(settingIntent);
+            }
+        });
+
+        binding.viewMyTeam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent teamIntent = new Intent(requireActivity(), MyTeamActivity.class);
+                teamIntent.putExtra("username", userInfoBean.getData().getUsername());
+                startActivity(teamIntent);
             }
         });
 
@@ -230,6 +282,10 @@ public class MyFragment extends Fragment {
                         image.setImageResource(R.mipmap.my_bank_card);
                         name.setText(dataBean.getName());
                         break;
+                    case "golden_coupon":
+                        image.setImageResource(R.mipmap.gold);
+                        name.setText(dataBean.getName());
+                        break;
                     case "certificate":
                         image.setImageResource(R.mipmap.certificate);
                         name.setText(dataBean.getName());
@@ -258,6 +314,10 @@ public class MyFragment extends Fragment {
                             intent.putExtra("nickName", userInfoBean.getData().getUsername());
                             startActivity(intent);
                         }
+                        if (dataBean.getEng_name() == "golden_coupon") {
+                            Intent intent = new Intent(requireActivity(), GoldenCouponActivity.class);
+                            startActivity(intent);
+                        }
                         if(dataBean.getEng_name() == "logout") {
                             new XPopup.Builder(requireActivity())
                                     .asConfirm("警告", "您确认要退出吗？", new OnConfirmListener() {
@@ -274,6 +334,34 @@ public class MyFragment extends Fragment {
                         if(dataBean.getEng_name() == "certificate"){
                             Intent certificateIntent = new Intent(requireActivity(), CertificateActivity.class);
                             startActivity(certificateIntent);
+                        }
+                        if(dataBean.getEng_name() == "my_bank_card") {
+                            Intent bankCardIntent = new Intent(requireActivity(), MyBankAccountActivity.class);
+                            bankCardIntent.putExtra("bank_real_name", userInfoBean.getData().getBank_realname());
+                            bankCardIntent.putExtra("bank_name", userInfoBean.getData().getBank_name());
+                            bankCardIntent.putExtra("bank_account", userInfoBean.getData().getBank_account());
+                            startActivity(bankCardIntent);
+                        }
+                        if(dataBean.getEng_name() == "contact_customer_service") {
+                            OkHttpUtils
+                                    .post()
+                                    .url(Util.url + "api/user/customer_service")
+                                    .addParams("token", Util.getToken(requireActivity()))
+                                    .addParams("wxapp_id", "10001")
+                                    .build()
+                                    .execute(new StringCallback() {
+                                        @Override
+                                        public void onError(Call call, Exception e, int id) {
+
+                                        }
+
+                                        @Override
+                                        public void onResponse(String response, int id) {
+                                            Gson gson = new Gson();
+                                            ResultMsgBean bean = gson.fromJson(response, ResultMsgBean.class);
+                                            Util.callPhone(requireActivity(), bean.getData());
+                                        }
+                                    });
                         }
                     }
                 });

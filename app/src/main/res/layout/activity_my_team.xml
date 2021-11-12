@@ -80,6 +80,7 @@
             android:id="@+id/linearLayout18"
             android:layout_width="35dp"
             android:layout_height="12dp"
+            android:visibility="gone"
             android:background="@drawable/level_grade_background"
             android:gravity="center"
             app:layout_constraintBottom_toBottomOf="@+id/user_avatar"
@@ -96,11 +97,11 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView16"
+            android:id="@+id/top_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="9.5dp"
-            android:text="周拉拉"
+            android:text=""
             android:textColor="#ffcab369"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="@+id/user_avatar"
@@ -116,7 +117,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/constraintLayout19"
             app:layout_constraintEnd_toStartOf="@+id/linearLayout20"
             app:layout_constraintStart_toStartOf="@+id/constraintLayout19"
-            app:layout_constraintTop_toBottomOf="@+id/textView16">
+            app:layout_constraintTop_toBottomOf="@+id/top_username">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -126,10 +127,10 @@
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18.5dp"
-                android:text="18"
                 android:textColor="#ffcab369"
                 android:textSize="16sp" />
 
@@ -144,20 +145,20 @@
             app:layout_constraintBottom_toBottomOf="@+id/constraintLayout19"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
             app:layout_constraintStart_toStartOf="@+id/guideline4"
-            app:layout_constraintTop_toBottomOf="@+id/textView16">
+            app:layout_constraintTop_toBottomOf="@+id/top_username">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="粉丝总数"
+                android:text="直接粉丝"
                 android:textColor="#ff333333"
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/first"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18.5dp"
-                android:text="18"
                 android:textColor="#ffcab369"
                 android:textSize="16sp" />
 
@@ -171,24 +172,49 @@
             app:layout_constraintBottom_toBottomOf="@+id/constraintLayout19"
             app:layout_constraintEnd_toEndOf="@+id/constraintLayout19"
             app:layout_constraintStart_toEndOf="@+id/linearLayout20"
-            app:layout_constraintTop_toBottomOf="@+id/textView16">
+            app:layout_constraintTop_toBottomOf="@+id/top_username">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="粉丝总数"
+                android:text="间接粉丝"
                 android:textColor="#ff333333"
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/second"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18.5dp"
-                android:text="18"
                 android:textColor="#ffcab369"
                 android:textSize="16sp" />
 
         </LinearLayout>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout19"
+            app:tabBackground="@android:color/transparent"
+            app:tabIndicatorColor="#CAB369"
+            app:tabIndicatorFullWidth="false"
+            app:tabRippleColor="@android:color/transparent"
+            app:tabSelectedTextColor="#CAB369" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="#ffffff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tab_layout"
+            />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline4"

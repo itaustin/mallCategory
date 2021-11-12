@@ -31,10 +31,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleBar"
         app:tabBackground="@android:color/transparent"
-        app:tabIndicatorColor="#5A72B9"
+        app:tabIndicatorColor="#CAB369"
         app:tabIndicatorFullWidth="false"
         app:tabRippleColor="@android:color/transparent"
-        app:tabSelectedTextColor="#5A72B9" />
+        app:tabSelectedTextColor="#CAB369" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager2"

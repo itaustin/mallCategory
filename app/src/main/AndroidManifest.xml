@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.rbt.diamond" >
+    package="com.rbt.diamond">
 
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 解锁屏幕需要的权限 -->
     <!-- 用于访问GPS定位 -->
@@ -33,11 +33,34 @@
         android:name=".MyApplication"
         android:allowBackup="true"
         android:fitsSystemWindows="true"
-        android:icon="@mipmap/ic_launcher_custom"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_custom"
+        android:maxAspectRatio="2.4"
+        android:resizeableActivity="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/Base.Theme.NoActionBar"
+        android:windowSoftInputMode="stateVisible"
+        tools:replace="android:theme"
+        tools:targetApi="o">
+        <activity
+            android:name=".activity.my.RedeemActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.points.CanUserPointsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.home.PointsCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.home.SearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.my.GoldenCouponActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.my.MyBankAccountActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.order.OrderActivity"
             android:exported="false" />
@@ -94,7 +117,7 @@
             android:exported="true" />
         <activity
             android:name=".SplashActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -104,10 +127,19 @@
 
         <meta-data
             android:name="design_width_in_dp"
-            android:value="390" />
+            android:value="370" />
         <meta-data
             android:name="design_height_in_dp"
             android:value="640" />
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="4.4" />
+        <meta-data
+            android:name="android.notch_support"
+            android:value="true" /> <!-- 适配小米（xiaomi）刘海屏 -->
+        <meta-data
+            android:name="notch.config"
+            android:value="portrait|landscape" />
     </application>
 
 </manifest>

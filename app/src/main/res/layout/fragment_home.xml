@@ -33,9 +33,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
+                <com.youth.banner.Banner
                     android:id="@+id/imageView"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="442dp"
                     android:visibility="visible"
                     android:scaleType="fitXY"
@@ -43,6 +43,16 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/viewImage"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView"
+                    app:layout_constraintStart_toStartOf="@+id/imageView"
+                    app:layout_constraintTop_toTopOf="@+id/imageView" />
 
                 <LinearLayout
                     android:id="@+id/scan_qrcode"
@@ -72,6 +82,7 @@
                 </LinearLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/search_goods"
                     android:layout_width="264dp"
                     android:layout_height="34dp"
                     android:visibility="visible"
@@ -91,13 +102,14 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <EditText
+                    <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="12dp"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
-                        android:hint="新人优惠"
+                        android:gravity="center_vertical"
+                        android:hint="请输入商品名称或货号"
                         android:textColor="#ff333333"
                         android:textColorHint="#ff333333"
                         android:textSize="14sp"
@@ -112,6 +124,7 @@
                     android:id="@+id/constraintLayout"
                     android:layout_width="334.3dp"
                     android:layout_height="40dp"
+                    android:layout_marginBottom="-40dp"
                     android:background="@drawable/mall_index_todo_bg"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -122,22 +135,31 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="13dp"
-                        android:text="LOGO"
+                        android:text="女神安心换"
                         android:textColor="#ffffffff"
                         android:textSize="11sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
+                    <ImageView
+                        android:id="@+id/icon"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginStart="10.5dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/todo"
+                        app:layout_constraintStart_toEndOf="@+id/textView"
+                        app:layout_constraintTop_toTopOf="@+id/todo" />
+
                     <TextView
-                        android:layout_width="242dp"
+                        android:id="@+id/todo"
+                        android:layout_width="232dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="15.5dp"
-                        android:text="全新登场：活动期间限时7折优惠7折优惠"
+                        android:layout_marginStart="4dp"
                         android:textColor="#ffffffff"
                         android:textSize="13sp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/textView"
+                        app:layout_constraintStart_toEndOf="@+id/icon"
                         app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -252,6 +274,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/member_mall">
 
                     <LinearLayout
+                        android:id="@+id/points_mall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -260,13 +283,13 @@
                         <ImageView
                             android:layout_width="27dp"
                             android:layout_height="28dp"
-                            android:src="@mipmap/c2c_icon" />
+                            android:src="@mipmap/points_mall" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="自由交易区"
+                            android:text="积分商城"
                             android:textColor="#ff000000"
                             android:textSize="13sp" />
 
@@ -344,11 +367,12 @@
                     android:id="@+id/constraintLayout5"
                     android:layout_width="162dp"
                     android:layout_height="65dp"
-                    android:visibility="visible"
+                    android:layout_marginTop="25dp"
                     android:background="@drawable/home_danger_bg"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toStartOf="@+id/guideline2"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/constraintLayout4">
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
                     <LinearLayout
                         android:id="@+id/linearLayout4"
@@ -382,8 +406,8 @@
                         android:id="@+id/imageView5"
                         android:layout_width="47dp"
                         android:layout_height="44dp"
-                        android:src="@mipmap/goods_1"
                         android:layout_marginEnd="15dp"
+                        android:src="@mipmap/goods_1"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -394,11 +418,11 @@
                     android:id="@+id/constraintLayout6"
                     android:layout_width="162dp"
                     android:layout_height="65dp"
-                    android:visibility="visible"
                     android:background="@drawable/home_danger_bg"
-                    app:layout_constraintBottom_toBottomOf="@+id/constraintLayout4"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                    app:layout_constraintStart_toStartOf="parent">
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline2"
+                    app:layout_constraintTop_toTopOf="@+id/constraintLayout5">
 
                     <LinearLayout
                         android:id="@+id/linearLayout5"
@@ -446,7 +470,7 @@
                     android:layout_width="166dp"
                     android:layout_height="147dp"
                     android:layout_marginTop="25dp"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     android:background="@drawable/home_danger_bg"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -499,16 +523,15 @@
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="13dp"
                     android:layout_marginTop="24.5dp"
                     android:text="精选品牌"
                     android:textColor="#ff000000"
                     android:textSize="15sp"
-                    app:layout_constraintStart_toStartOf="@+id/constraintLayout6"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout6" />
+                    app:layout_constraintStart_toStartOf="@+id/linearLayout3"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout5" />
 
                 <ImageView
-                    android:id="@+id/imageView6"
+                    android:id="@+id/bann_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/big_image_1"
@@ -518,12 +541,13 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/bann_cons"
                     android:layout_width="0dp"
                     android:layout_height="112dp"
                     android:background="@drawable/big_image_one_bg"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView6"
-                    app:layout_constraintEnd_toEndOf="@+id/imageView6"
-                    app:layout_constraintStart_toStartOf="@+id/imageView6">
+                    app:layout_constraintBottom_toBottomOf="@+id/bann_item"
+                    app:layout_constraintEnd_toEndOf="@+id/bann_item"
+                    app:layout_constraintStart_toStartOf="@+id/bann_item">
 
                     <LinearLayout
                         android:id="@+id/linearLayout6"
@@ -574,15 +598,16 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/goods_recycler"
+                    android:id="@+id/member_recycler"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="25.5dp"
+                    android:nestedScrollingEnabled="false"
                     android:layout_marginBottom="15dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+                    app:layout_constraintTop_toBottomOf="@+id/bann_item" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline2"

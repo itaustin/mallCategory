@@ -27,6 +27,7 @@ import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.builder.PostFormBuilder;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.util.ArrayList;
@@ -85,6 +86,9 @@ public class MemberMallActivity extends AppCompatActivity {
         if(intent.getStringExtra("category_id").equals("10002")){
             binding.titleBar.setTitle("消费商城");
         }
+        if(intent.getStringExtra("category_id").equals("0")){
+            binding.titleBar.setTitle("搜索结果");
+        }
         // 返回功能
         binding.titleBar.setOnTitleBarListener(new OnTitleBarListener() {
             @Override
@@ -112,45 +116,48 @@ public class MemberMallActivity extends AppCompatActivity {
     }
 
     protected void initRequestData(int listPage) {
-        System.out.println("执行一次");
-        OkHttpUtils
-                .post()
-                .url(Util.getCustomUrl("?s=/api/goods/lists"))
-                .addParams("wxapp_id", "10001")
-                .addParams("category_id", intent.getStringExtra("category_id"))
-                .addParams("page", String.valueOf(listPage))
-                .build()
-                .execute(new StringCallback() {
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
+        PostFormBuilder builder = OkHttpUtils.post();
+        if(!intent.getStringExtra("category_id").equals("0")){
+            builder.addParams("category_id", intent.getStringExtra("category_id"));
+        } else {
+            builder.addParams("search", intent.getStringExtra("search_content"));
+        }
+        builder
+            .url(Util.getCustomUrl("?s=/api/goods/lists"))
+            .addParams("wxapp_id", "10001")
+            .addParams("page", String.valueOf(listPage))
+            .build()
+            .execute(new StringCallback() {
+                @Override
+                public void onError(Call call, Exception e, int id) {
 
-                    }
+                }
 
-                    @Override
-                    public void onResponse(String response, int id) {
-                        System.out.println(response);
-                        Gson gson = new Gson();
-                        GoodsListBean goodsListBean = gson.fromJson(response, GoodsListBean.class);
-                        if (goodsListBean.getCode() == -1) {
-                            // 去登录
-                            Intent intent = new Intent(MemberMallActivity.this, LoginActivity.class);
-                            startActivity(intent);
-                        } else if (goodsListBean.getData().getList().getData().size() != 0) {
-                            binding.smartRefreshLayout.finishRefresh();
-                            if(page > 1){
-                                adapter.addData(goodsListBean.getData().getList().getData());
-                            } else {
-                                adapter = new GoodsListAdapter(goodsListBean.getData().getList().getData(), MemberMallActivity.this);
-                                binding.goodsRecycler.setAdapter(adapter);
-                            }
-                            total_page = goodsListBean.getData().getList().getLast_page();
-                            System.out.println("adapter_count" + adapter.getItemCount());
+                @Override
+                public void onResponse(String response, int id) {
+                    System.out.println(response);
+                    Gson gson = new Gson();
+                    GoodsListBean goodsListBean = gson.fromJson(response, GoodsListBean.class);
+                    if (goodsListBean.getCode() == -1) {
+                        // 去登录
+                        Intent intent = new Intent(MemberMallActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                    } else if (goodsListBean.getData().getList().getData().size() != 0) {
+                        binding.smartRefreshLayout.finishRefresh();
+                        if(page > 1){
+                            adapter.addData(goodsListBean.getData().getList().getData());
                         } else {
                             adapter = new GoodsListAdapter(goodsListBean.getData().getList().getData(), MemberMallActivity.this);
-                            binding.smartRefreshLayout.finishLoadMoreWithNoMoreData();
                             binding.goodsRecycler.setAdapter(adapter);
                         }
+                        total_page = goodsListBean.getData().getList().getLast_page();
+                        System.out.println("adapter_count" + adapter.getItemCount());
+                    } else {
+                        adapter = new GoodsListAdapter(goodsListBean.getData().getList().getData(), MemberMallActivity.this);
+                        binding.smartRefreshLayout.finishLoadMoreWithNoMoreData();
+                        binding.goodsRecycler.setAdapter(adapter);
                     }
-                });
+                }
+            });
     }
 }

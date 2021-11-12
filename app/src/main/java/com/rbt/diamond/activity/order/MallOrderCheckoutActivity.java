@@ -65,6 +65,8 @@ public class MallOrderCheckoutActivity extends AppCompatActivity {
 
     protected File pay_image = null;
 
+    protected OrderCheckoutBean bean;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -143,7 +145,7 @@ public class MallOrderCheckoutActivity extends AppCompatActivity {
                     public void onResponse(String response, int id) {
                         System.out.println(response);
                         Gson gson = new Gson();
-                        OrderCheckoutBean bean = gson.fromJson(response, OrderCheckoutBean.class);
+                        bean = gson.fromJson(response, OrderCheckoutBean.class);
                         if(bean.getCode() == -1) {
                             Util.showToastError(MallOrderCheckoutActivity.this, "请先登录");
                             finish();
@@ -157,8 +159,8 @@ public class MallOrderCheckoutActivity extends AppCompatActivity {
                                 address.setText(bean.getData().getAddress().getRegion().getProvince() + "-" + bean.getData().getAddress().getRegion().getCity() + "-" + bean.getData().getAddress().getRegion().getRegion() + bean.getData().getAddress().getDetail());
                             } else {
                                 address_name.setText("待添加收货地址");
-                                phone.setText("待添加收货地址");
-                                address.setText("待添加收货地址");
+//                                phone.setText("待添加收货地址");
+//                                address.setText("待添加收货地址");
                             }
                             goodsListBeanEasyAdapter = new EasyAdapter<OrderCheckoutBean.DataBean.GoodsListBean>(bean.getData().getGoods_list(), R.layout.order_checkout_goods_item) {
                                 @Override
@@ -182,7 +184,67 @@ public class MallOrderCheckoutActivity extends AppCompatActivity {
         pay_now.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(pay_image == null){
+                if(bean.getData().getGoods_list().get(0).getCategory_id() != 10001){
+                    OkHttpUtils
+                            .post()
+                            .url(Util.url + "?s=/api/order/buyNowAlipayForAndroid")
+                            .addParams("delivery", String.valueOf(intent.getIntExtra("delivery", 0)))
+                            .addParams("shop_id", String.valueOf(intent.getIntExtra("shop_id", 0)))
+                            .addParams("coupon_id", String.valueOf(intent.getIntExtra("coupon_id", 0)))
+                            .addParams("is_use_points", String.valueOf(intent.getIntExtra("is_use_points", 0)))
+                            .addParams("goods_id", String.valueOf(intent.getIntExtra("goods_id", 0)))
+                            .addParams("goods_num", String.valueOf(intent.getIntExtra("goods_num", 0)))
+                            .addParams("goods_sku_id", String.valueOf(intent.getStringExtra("goods_sku_id")))
+                            .addParams("wxapp_id", String.valueOf(intent.getIntExtra("wxapp_id", 0)))
+                            .addParams("token", Util.getToken(MallOrderCheckoutActivity.this))
+                            .build()
+                            .execute(new StringCallback() {
+                                @Override
+                                public void onError(Call call, Exception e, int id) {
+                                    System.out.println(e.getMessage());
+                                }
+
+                                @Override
+                                public void onResponse(String response, int id) {
+                                    Gson gson = new Gson();
+                                    PayBean payBean = gson.fromJson(response, PayBean.class);
+                                    if(payBean.getCode() == 2){
+                                        Util.showToastSuccess(MallOrderCheckoutActivity.this, "积分支付成功");
+                                        finish();
+                                    } else if(payBean.getCode() == 3) {
+                                        Util.showToastSuccess(MallOrderCheckoutActivity.this, payBean.getMsg());
+                                        startActivity(new Intent(MallOrderCheckoutActivity.this, MainActivity.class));
+                                    } else if(payBean.getCode() == 1) {
+                                        Util.showToastSuccess(MallOrderCheckoutActivity.this, "购买成功，请耐心等待积分到账。");
+                                    } else if(payBean.getCode() == 0){
+                                        Util.showToastError(MallOrderCheckoutActivity.this, payBean.getMsg());
+                                    } else {
+                                        AliPayInfo aliPayInfo = new AliPayInfo();
+                                        aliPayInfo.payParam = payBean.getData();
+                                        PayAPI.get(MallOrderCheckoutActivity.this, PAY_TYPE.ALIPAY).pay(aliPayInfo, new PayCallback() {
+                                            @Override
+                                            public void onComplete(PAY_TYPE payType, String result) {
+                                                //同步支付结果成功
+                                                Util.showToastSuccess(MallOrderCheckoutActivity.this, "支付成功");
+                                                finish();
+                                            }
+
+                                            @Override
+                                            public void onFail(PAY_TYPE payType, String msg) {
+                                                finish();
+                                                System.out.println("支付失败");
+                                            }
+
+                                            @Override
+                                            public void onCancel(PAY_TYPE payType) {
+                                                finish();
+                                                System.out.println("支付取消");
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+                } else {
                     new XPopup.Builder(MallOrderCheckoutActivity.this)
                             .asConfirm("温馨提示", "提交订单前您需要上传支付凭证/截图。", new OnConfirmListener() {
                                 @Override
@@ -203,7 +265,7 @@ public class MallOrderCheckoutActivity extends AppCompatActivity {
                                                 @Override
                                                 public void onResult(List<LocalMedia> result) {
                                                     System.out.println(result.toString());
-                                                    for (LocalMedia media : result){
+                                                    for (LocalMedia media : result) {
                                                         BitmapFactory.Options options = new BitmapFactory.Options();
                                                         options.inJustDecodeBounds = true;
                                                         // Bitmap bitmap = BitmapFactory.decodeFile(media.isCut() ? media.getCutPath() : media.getRealPath());
@@ -261,14 +323,16 @@ public class MallOrderCheckoutActivity extends AppCompatActivity {
                                                                                         basePopupView.smartDismiss();
                                                                                         Gson gson = new Gson();
                                                                                         PayBean payBean = gson.fromJson(response, PayBean.class);
-                                                                                        if(payBean.getCode() == 2){
+                                                                                        if (payBean.getCode() == 2) {
                                                                                             Util.showToastSuccess(MallOrderCheckoutActivity.this, "积分支付成功");
                                                                                             finish();
-                                                                                        } else if(payBean.getCode() == 3) {
+                                                                                        } else if (payBean.getCode() == 3) {
                                                                                             Util.showToastSuccess(MallOrderCheckoutActivity.this, payBean.getMsg());
                                                                                             startActivity(new Intent(MallOrderCheckoutActivity.this, MainActivity.class));
-                                                                                        } else if(payBean.getCode() == 1) {
+                                                                                        } else if (payBean.getCode() == 1) {
                                                                                             Util.showToastSuccess(MallOrderCheckoutActivity.this, "购买成功，请耐心等待积分到账。");
+                                                                                        } else if (payBean.getCode() == 0) {
+                                                                                            Util.showToastError(MallOrderCheckoutActivity.this, payBean.getMsg());
                                                                                         } else {
                                                                                             AliPayInfo aliPayInfo = new AliPayInfo();
                                                                                             aliPayInfo.payParam = payBean.getData();

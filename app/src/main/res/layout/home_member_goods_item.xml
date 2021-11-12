@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/goods_background"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+
+        <ImageView
+            android:id="@+id/goods_image"
+            android:layout_width="88dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:src="@mipmap/avatar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/goods_name"
+            android:layout_width="78dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="钻石项链-18K 金（粉色）经典
+Monogram Flower花卉纹
+饰闪耀绽放"
+            android:textColor="#ff333333"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="@+id/goods_image"
+            app:layout_constraintStart_toStartOf="@+id/goods_image"
+            app:layout_constraintTop_toBottomOf="@+id/goods_image" />
+
+        <TextView
+            android:id="@+id/goods_price"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6.5dp"
+            android:text="￥6500.00"
+            android:textColor="#ffcab369"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/goods_name"
+            app:layout_constraintTop_toBottomOf="@+id/goods_name" />
+
+        <TextView
+            android:id="@+id/line_price"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2.5dp"
+            android:layout_marginBottom="15dp"
+            android:textColor="#DDDDDD"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/goods_name"
+            app:layout_constraintTop_toBottomOf="@+id/goods_price" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

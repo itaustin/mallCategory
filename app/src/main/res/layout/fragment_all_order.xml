@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".auctionFragment.order_fragment.MyBuyFragment">
+    android:layout_height="match_parent">
 
     <com.scwang.smart.refresh.layout.SmartRefreshLayout
         android:id="@+id/smartRefreshLayout"
@@ -59,6 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="17dp"
             android:text="暂无数据"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="@+id/imageView21"
             app:layout_constraintStart_toStartOf="@+id/imageView21"
             app:layout_constraintTop_toBottomOf="@+id/imageView21" />

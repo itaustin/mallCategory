@@ -206,13 +206,13 @@ public class CategoryFragment extends Fragment {
                             if(page > 1){
                                 goodsListAdapter.addData(bean.getData().getList().getData());
                             } else {
-                                goodsListAdapter = new CategoryGoodsAdapter(bean.getData().getList().getData(), requireActivity());
+                                goodsListAdapter = new CategoryGoodsAdapter(bean.getData().getList().getData(), requireActivity(), 0);
                                 binding.goodsRecycler.setAdapter(goodsListAdapter);
                             }
                             total_page = bean.getData().getList().getLast_page();
                             System.out.println("adapter_count" + goodsListAdapter.getItemCount());
                         } else {
-                            goodsListAdapter = new CategoryGoodsAdapter(bean.getData().getList().getData(), requireActivity());
+                            goodsListAdapter = new CategoryGoodsAdapter(bean.getData().getList().getData(), requireActivity(), 0);
                             binding.smartRefreshLayout.finishLoadMoreWithNoMoreData();
                             binding.goodsRecycler.setAdapter(goodsListAdapter);
                         }

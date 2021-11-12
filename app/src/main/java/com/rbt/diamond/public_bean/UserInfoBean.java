@@ -61,6 +61,7 @@ public class UserInfoBean implements Serializable {
         private String points;
         private String mall_points;
         private String freeze_points;
+        private String handling_fee_points;
         private String total_points;
         private String user_voucher;
         private String team_bonus;
@@ -300,6 +301,14 @@ public class UserInfoBean implements Serializable {
 
         public void setFreeze_points(String freeze_points) {
             this.freeze_points = freeze_points;
+        }
+
+        public String getHandling_fee_points() {
+            return handling_fee_points;
+        }
+
+        public void setHandling_fee_points(String handling_fee_points) {
+            this.handling_fee_points = handling_fee_points;
         }
 
         public String getTotal_points() {

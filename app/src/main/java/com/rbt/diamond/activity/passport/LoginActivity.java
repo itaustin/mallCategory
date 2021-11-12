@@ -11,6 +11,7 @@ import android.view.View;
 
 import com.google.gson.Gson;
 import com.hjq.bar.OnTitleBarListener;
+import com.rbt.diamond.MainActivity;
 import com.rbt.diamond.R;
 import com.rbt.diamond.databinding.ActivityLoginBinding;
 import com.rbt.diamond.public_bean.LoginUserBean;
@@ -84,7 +85,8 @@ public class LoginActivity extends AppCompatActivity {
                                         editor.putString("token", bean.getData().getToken());
                                         editor.putInt("user_id", bean.getData().getUser_id());
                                         editor.apply();
-                                        finish();
+                                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                        startActivity(intent);
                                     } else if(bean.getCode() == 0){
                                         // 登录错误
                                         Util.showToastError(LoginActivity.this, bean.getMsg());
