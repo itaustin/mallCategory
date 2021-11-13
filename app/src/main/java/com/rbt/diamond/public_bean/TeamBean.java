@@ -57,6 +57,7 @@ public class TeamBean implements Serializable {
             private int first;
             private int second;
             private int total;
+            private String team_total_price;
 
             public int getFirst() {
                 return first;
@@ -80,6 +81,14 @@ public class TeamBean implements Serializable {
 
             public void setTotal(int total) {
                 this.total = total;
+            }
+
+            public String getTeam_total_price() {
+                return team_total_price;
+            }
+
+            public void setTeam_total_price(String team_total_price) {
+                this.team_total_price = team_total_price;
             }
         }
 

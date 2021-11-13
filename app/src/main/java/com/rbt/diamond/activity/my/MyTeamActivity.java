@@ -153,6 +153,7 @@ public class MyTeamActivity extends AppCompatActivity {
                             binding.total.setText(String.valueOf(bean.getData().getCount().getTotal()));
                             binding.first.setText(String.valueOf(bean.getData().getCount().getFirst()));
                             binding.second.setText(String.valueOf(bean.getData().getCount().getSecond()));
+                            binding.topUsername.setText("团队总业绩：" + bean.getData().getCount().getTeam_total_price());
                         }
                     }
                 });
