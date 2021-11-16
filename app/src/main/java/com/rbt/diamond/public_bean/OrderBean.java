@@ -519,6 +519,7 @@ public class OrderBean {
                 private int user_id;
                 private int goods_source_id;
                 private ImageBean image;
+                private String category_id;
 
                 public int getOrder_goods_id() {
                     return order_goods_id;
@@ -790,6 +791,14 @@ public class OrderBean {
 
                 public void setImage(ImageBean image) {
                     this.image = image;
+                }
+
+                public String getCategory_id() {
+                    return category_id;
+                }
+
+                public void setCategory_id(String category_id) {
+                    this.category_id = category_id;
                 }
 
                 public static class ImageBean {

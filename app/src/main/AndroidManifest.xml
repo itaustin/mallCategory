@@ -44,6 +44,12 @@
         tools:replace="android:theme"
         tools:targetApi="o">
         <activity
+            android:name=".activity.my.TeamRecordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.passport.ChangePasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.my.RedeemActivity"
             android:exported="false" />
         <activity

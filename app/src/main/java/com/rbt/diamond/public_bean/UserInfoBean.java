@@ -83,6 +83,8 @@ public class UserInfoBean implements Serializable {
         private int wait_mall_delivery;
         private int grade_id;
         private int level;
+        protected int g_price;
+        protected int g_exchange_price;
         private List<?> address;
         private Object address_default;
         private Object grade;
@@ -493,6 +495,22 @@ public class UserInfoBean implements Serializable {
 
         public void setAddress_default(Object address_default) {
             this.address_default = address_default;
+        }
+
+        public int getG_price() {
+            return g_price;
+        }
+
+        public void setG_price(int g_price) {
+            this.g_price = g_price;
+        }
+
+        public int getG_exchange_price() {
+            return g_exchange_price;
+        }
+
+        public void setG_exchange_price(int g_exchange_price) {
+            this.g_exchange_price = g_exchange_price;
         }
 
         public Object getGrade() {

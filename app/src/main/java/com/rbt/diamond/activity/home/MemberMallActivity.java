@@ -86,6 +86,15 @@ public class MemberMallActivity extends AppCompatActivity {
         if(intent.getStringExtra("category_id").equals("10002")){
             binding.titleBar.setTitle("消费商城");
         }
+        if(intent.getStringExtra("category_id").equals("10010")){
+            binding.titleBar.setTitle("Top榜");
+        }
+        if(intent.getStringExtra("category_id").equals("10011")){
+            binding.titleBar.setTitle("新品首发");
+        }
+        if(intent.getStringExtra("category_id").equals("10012")){
+            binding.titleBar.setTitle("折扣最优");
+        }
         if(intent.getStringExtra("category_id").equals("0")){
             binding.titleBar.setTitle("搜索结果");
         }

@@ -31,6 +31,8 @@ public class RedeemActivity extends AppCompatActivity {
     private List<String> data_list;
     private ArrayAdapter<String> arr_adapter;
     protected int g = 0;
+    protected int total_points = 0;
+    protected int need_points = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +78,6 @@ public class RedeemActivity extends AppCompatActivity {
         binding.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                System.out.println(data_list.get(i));
                 if(data_list.get(i).equals("5g")){
                     g = 5;
                 }
@@ -92,7 +93,12 @@ public class RedeemActivity extends AppCompatActivity {
                 if(data_list.get(i).equals("100g")){
                     g = 100;
                 }
-                System.out.println(g);
+                int g_exchange_price = intent.getIntExtra("g_exchange_price", 0);
+                int mul = intent.getIntExtra("mul", 0);
+                total_points = g_exchange_price * g;
+                need_points = mul * g;
+                binding.points.setText(intent.getStringExtra("points"));
+                binding.handlingFeePoints.setText(String.valueOf(total_points));
             }
 
             @Override
@@ -100,8 +106,6 @@ public class RedeemActivity extends AppCompatActivity {
 
             }
         });
-
-        binding.points.setText(intent.getStringExtra("points"));
 
         binding.save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,10 +115,11 @@ public class RedeemActivity extends AppCompatActivity {
                             @Override
                             public void onConfirm() {
                                 OkHttpUtils
-                                        .post()
+                                        .get()
                                         .url(Util.url + "api/user/redeem_gold")
                                         .addParams("token", Util.getToken(RedeemActivity.this))
                                         .addParams("wxapp_id", "10001")
+                                        .addParams("handling_fee_points", String.valueOf(need_points))
                                         .addParams("g", String.valueOf(g))
                                         .build()
                                         .execute(new StringCallback() {

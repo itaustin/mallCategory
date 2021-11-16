@@ -133,7 +133,7 @@ public class AllOrderFragment extends Fragment implements View.OnClickListener {
 //                .show();
         String url = Util.url + "?s=/api/user.order/listsForAndroid";
         OkHttpUtils
-                .post()
+                .get()
                 .url(url)
                 .addParams("page", String.valueOf(page))
                 .addParams("dataType", "all")
@@ -168,6 +168,8 @@ public class AllOrderFragment extends Fragment implements View.OnClickListener {
                                 protected void bind(@NonNull ViewHolder viewHolder, OrderBean.OrderListBean.DataBean dataBean, int i) {
                                     viewHolder.setText(R.id.order_no, "订单编号：" + dataBean.getOrder_no());
                                     viewHolder.setText(R.id.order_status, dataBean.getOrder_status().getText());
+
+                                    viewHolder.getView(R.id.cancel).setVisibility(View.GONE);
 
                                     viewHolder.setText(R.id.goods_total_num, "共" + dataBean.getGoods().size() + "件商品");
                                     viewHolder.setText(R.id.goods_total_price, "" + dataBean.getTotal_price());
@@ -218,7 +220,12 @@ public class AllOrderFragment extends Fragment implements View.OnClickListener {
                                                 viewHolder.getView(R.id.cancel).setVisibility(View.GONE);
 
                                                 viewHolder.setText(R.id.order_status, "待发货，包裹打包中...");
-                                                viewHolder.getView(R.id.cancel).setVisibility(View.VISIBLE);
+
+                                                if(dataBean.getGoods().get(0).getCategory_id().equals("10001")) {
+                                                    viewHolder.getView(R.id.cancel).setVisibility(View.GONE);
+                                                } else {
+                                                    viewHolder.getView(R.id.cancel).setVisibility(View.VISIBLE);
+                                                }
                                             } else {
                                                 // 已发货
                                                 if(dataBean.getReceipt_status().getValue() == 10){

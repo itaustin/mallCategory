@@ -133,6 +133,33 @@ public class HomeFragment extends Fragment {
 
         binding.memberRecycler.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false));
 
+        binding.top.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(requireActivity(), MemberMallActivity.class);
+                intent.putExtra("category_id", "10010");
+                startActivity(intent);
+            }
+        });
+
+        binding.newGoods.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(requireActivity(), MemberMallActivity.class);
+                intent.putExtra("category_id", "10011");
+                startActivity(intent);
+            }
+        });
+
+        binding.sales.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(requireActivity(), MemberMallActivity.class);
+                intent.putExtra("category_id", "10012");
+                startActivity(intent);
+            }
+        });
+
     }
 
     protected void initRequestHomeData() {

@@ -70,6 +70,14 @@ public class MyTeamActivity extends AppCompatActivity {
 
             }
         });
+
+        binding.userAvatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MyTeamActivity.this, TeamRecordActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     protected void initViewPager() {

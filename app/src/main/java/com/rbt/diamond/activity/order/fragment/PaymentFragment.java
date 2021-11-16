@@ -169,6 +169,8 @@ public class PaymentFragment extends Fragment implements View.OnClickListener {
                                     viewHolder.setText(R.id.order_no, "订单编号：" + dataBean.getOrder_no());
                                     viewHolder.setText(R.id.order_status, dataBean.getOrder_status().getText());
 
+                                    viewHolder.getView(R.id.cancel).setVisibility(View.GONE);
+
                                     viewHolder.setText(R.id.goods_total_num, "共" + dataBean.getGoods().size() + "件商品");
                                     viewHolder.setText(R.id.goods_total_price, "" + dataBean.getTotal_price());
 
@@ -217,8 +219,11 @@ public class PaymentFragment extends Fragment implements View.OnClickListener {
                                                 viewHolder.getView(R.id.view_express).setVisibility(View.GONE);
                                                 viewHolder.getView(R.id.cancel).setVisibility(View.GONE);
 
-                                                viewHolder.setText(R.id.order_status, "待发货，包裹打包中...");
-                                                viewHolder.getView(R.id.cancel).setVisibility(View.VISIBLE);
+                                                if(dataBean.getGoods().get(0).getCategory_id().equals("10001")) {
+                                                    viewHolder.getView(R.id.cancel).setVisibility(View.GONE);
+                                                } else {
+                                                    viewHolder.getView(R.id.cancel).setVisibility(View.VISIBLE);
+                                                }
                                             } else {
                                                 // 已发货
                                                 if(dataBean.getReceipt_status().getValue() == 10){

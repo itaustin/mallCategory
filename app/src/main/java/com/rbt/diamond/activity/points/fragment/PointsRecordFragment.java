@@ -103,6 +103,8 @@ public class PointsRecordFragment extends Fragment {
                                         description.setText(dataBean.getDescription());
                                         points_number.setText("+" + dataBean.getPoints());
                                     }
+
+                                    viewHolder.setText(R.id.create_time, dataBean.getCreate_time());
                                 }
                             };
                             binding.pointsRecordRecycler.setAdapter(adapter);

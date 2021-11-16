@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.33177083333333335" />
+        <entry key="../../.gradle/caches/transforms-3/5e2586e01ca43868a4b8a25c22c4a699/transformed/jetified-citypickerview-5.2.4/res/drawable/bg_draw1.xml" value="0.2616033755274262" />
         <entry key="../../.gradle/caches/transforms-3/641052f6de92399d7241182573706c9c/transformed/jetified-CustomHotelCalender-V1.0.2/res/layout/popupwindow_hotel_date.xml" value="0.16979166666666667" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/diamond/app/src/main/res/layout/activity_main.xml" value="0.34375" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/diamond/app/src/main/res/layout/activity_splash.xml" value="0.34375" />
@@ -45,6 +46,7 @@
         <entry key="app/src/main/res/layout/activity_cart_mall_order_checkout.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_certificate.xml" value="0.26119674766725476" />
         <entry key="app/src/main/res/layout/activity_certificate2.xml" value="0.22350427350427352" />
+        <entry key="app/src/main/res/layout/activity_change_password.xml" value="0.2517094017094017" />
         <entry key="app/src/main/res/layout/activity_comment.xml" value="0.27395833333333336" />
         <entry key="app/src/main/res/layout/activity_edit_address.xml" value="0.27395833333333336" />
         <entry key="app/src/main/res/layout/activity_ex_press_info.xml" value="0.27395833333333336" />
@@ -69,6 +71,7 @@
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.45" />
         <entry key="app/src/main/res/layout/activity_search.xml" value="0.22264957264957264" />
         <entry key="app/src/main/res/layout/activity_setting.xml" value="0.22350427350427352" />
+        <entry key="app/src/main/res/layout/activity_team_record.xml" value="0.2517094017094017" />
         <entry key="app/src/main/res/layout/banner_image.xml" value="0.31666666666666665" />
         <entry key="app/src/main/res/layout/category_goods_item.xml" value="0.22350427350427352" />
         <entry key="app/src/main/res/layout/category_item.xml" value="0.22350427350427352" />
@@ -77,7 +80,7 @@
         <entry key="app/src/main/res/layout/fragment_all_order.xml" value="0.27395833333333336" />
         <entry key="app/src/main/res/layout/fragment_category.xml" value="0.22350427350427352" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.28888888888888886" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22529313232830822" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_my.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_points_record.xml" value="0.21923076923076923" />
         <entry key="app/src/main/res/layout/golden_coupon_item.xml" value="0.25" />
@@ -94,6 +97,7 @@
         <entry key="app/src/main/res/layout/sku_item_layout.xml" value="0.27395833333333336" />
         <entry key="app/src/main/res/layout/sku_popup_title.xml" value="0.27395833333333336" />
         <entry key="app/src/main/res/layout/team_item.xml" value="0.3" />
+        <entry key="app/src/main/res/layout/team_list_item.xml" value="0.2517094017094017" />
         <entry key="app/src/main/res/menu/mall.xml" value="0.31666666666666665" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.31979166666666664" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.31979166666666664" />

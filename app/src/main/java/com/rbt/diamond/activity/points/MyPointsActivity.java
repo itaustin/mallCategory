@@ -87,6 +87,9 @@ public class MyPointsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MyPointsActivity.this, RedeemActivity.class);
                 intent.putExtra("points", userInfoBean.getData().getFreeze_points());
+                intent.putExtra("handling_fee_points", userInfoBean.getData().getHandling_fee_points());
+                intent.putExtra("g_exchange_price", userInfoBean.getData().getG_price());
+                intent.putExtra("mul", userInfoBean.getData().getG_exchange_price());
                 startActivity(intent);
             }
         });

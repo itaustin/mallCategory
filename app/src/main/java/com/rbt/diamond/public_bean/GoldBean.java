@@ -39,6 +39,7 @@ public class GoldBean implements Serializable {
         private int user_id;
         private int order_id;
         private int is_use;
+        private int is_clerk;
         private int wxapp_id;
         private String create_time;
         private String update_time;
@@ -83,6 +84,14 @@ public class GoldBean implements Serializable {
 
         public void setIs_use(int is_use) {
             this.is_use = is_use;
+        }
+
+        public int getIs_clerk() {
+            return is_clerk;
+        }
+
+        public void setIs_clerk(int is_clerk) {
+            this.is_clerk = is_clerk;
         }
 
         public int getWxapp_id() {

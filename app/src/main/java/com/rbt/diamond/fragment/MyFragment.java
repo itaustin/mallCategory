@@ -191,10 +191,10 @@ public class MyFragment extends Fragment {
         contact_customer_service.setName("联系客服");
         list.add(contact_customer_service);
 
-        MyViewItemBean.DataBean my_bank_card = new MyViewItemBean.DataBean();
-        my_bank_card.setEng_name("my_bank_card");
-        my_bank_card.setName("我的银行卡");
-        list.add(my_bank_card);
+//        MyViewItemBean.DataBean my_bank_card = new MyViewItemBean.DataBean();
+//        my_bank_card.setEng_name("my_bank_card");
+//        my_bank_card.setName("我的银行卡");
+//        list.add(my_bank_card);
 
         MyViewItemBean.DataBean golden_coupon = new MyViewItemBean.DataBean();
         golden_coupon.setEng_name("golden_coupon");
@@ -278,10 +278,10 @@ public class MyFragment extends Fragment {
                         image.setImageResource(R.mipmap.contact_customer_service);
                         name.setText(dataBean.getName());
                         break;
-                    case "my_bank_card":
-                        image.setImageResource(R.mipmap.my_bank_card);
-                        name.setText(dataBean.getName());
-                        break;
+//                    case "my_bank_card":
+//                        image.setImageResource(R.mipmap.my_bank_card);
+//                        name.setText(dataBean.getName());
+//                        break;
                     case "golden_coupon":
                         image.setImageResource(R.mipmap.gold);
                         name.setText(dataBean.getName());
@@ -330,6 +330,7 @@ public class MyFragment extends Fragment {
                                             initLoadUserInfo();
                                         }
                                     }).show();
+                            binding.levelLayout.setVisibility(View.GONE);
                         }
                         if(dataBean.getEng_name() == "certificate"){
                             Intent certificateIntent = new Intent(requireActivity(), CertificateActivity.class);

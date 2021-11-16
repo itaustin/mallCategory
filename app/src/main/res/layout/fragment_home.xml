@@ -10,6 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#F3EEEC"
         tools:context=".fragment.HomeFragment">
 
         <!--    <com.youth.banner.Banner-->
@@ -296,6 +297,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/top"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="38dp"
@@ -318,6 +320,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/new_goods"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="38dp"
@@ -340,6 +343,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/sales"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="38dp"

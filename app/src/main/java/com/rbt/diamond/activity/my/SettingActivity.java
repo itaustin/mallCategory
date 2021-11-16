@@ -12,6 +12,7 @@ import com.lxj.xpopup.XPopup;
 import com.lxj.xpopup.core.BasePopupView;
 import com.lxj.xpopup.interfaces.OnInputConfirmListener;
 import com.rbt.diamond.R;
+import com.rbt.diamond.activity.passport.ChangePasswordActivity;
 import com.rbt.diamond.databinding.ActivitySettingBinding;
 import com.rbt.diamond.public_bean.ResultMsgBean;
 import com.rbt.diamond.util.Util;
@@ -59,6 +60,13 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     protected void initClick(){
+        binding.loginPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SettingActivity.this, ChangePasswordActivity.class);
+                startActivity(intent);
+            }
+        });
         binding.nickName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
