@@ -248,7 +248,7 @@ public class HomeFragment extends Fragment {
                 .setActivity(requireActivity())
                 .setPost(false)
                 .setParams(params)
-                .setTopPic(R.mipmap.banner)
+//                .setTopPic(R.mipmap.banner)
                 //更新地址
                 .setUpdateUrl(Util.url + "/api/apk/checkUpdate")
                 //实现httpManager接口的对象

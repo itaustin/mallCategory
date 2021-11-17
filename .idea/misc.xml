@@ -46,6 +46,7 @@
         <entry key="app/src/main/res/layout/activity_cart_mall_order_checkout.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_certificate.xml" value="0.26119674766725476" />
         <entry key="app/src/main/res/layout/activity_certificate2.xml" value="0.22350427350427352" />
+        <entry key="app/src/main/res/layout/activity_change_handling_fee_points.xml" value="0.2517094017094017" />
         <entry key="app/src/main/res/layout/activity_change_password.xml" value="0.2517094017094017" />
         <entry key="app/src/main/res/layout/activity_comment.xml" value="0.27395833333333336" />
         <entry key="app/src/main/res/layout/activity_edit_address.xml" value="0.27395833333333336" />
@@ -68,7 +69,7 @@
         <entry key="app/src/main/res/layout/activity_points_record.xml" value="0.27239583333333334" />
         <entry key="app/src/main/res/layout/activity_q_r_code.xml" value="0.298974358974359" />
         <entry key="app/src/main/res/layout/activity_reddem.xml" value="0.21923076923076923" />
-        <entry key="app/src/main/res/layout/activity_register.xml" value="0.45" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_search.xml" value="0.22264957264957264" />
         <entry key="app/src/main/res/layout/activity_setting.xml" value="0.22350427350427352" />
         <entry key="app/src/main/res/layout/activity_team_record.xml" value="0.2517094017094017" />

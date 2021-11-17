@@ -31,12 +31,17 @@ import com.rbt.diamond.public_adapter.CategoryGoodsAdapter;
 import com.rbt.diamond.public_bean.CategoryBean;
 import com.rbt.diamond.public_bean.GoodsDetailBean;
 import com.rbt.diamond.public_bean.GoodsListBean;
+import com.rbt.diamond.util.UpdateAppHttpUtil;
 import com.rbt.diamond.util.Util;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
+import com.vector.update_app.UpdateAppManager;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import okhttp3.Call;
 
@@ -77,7 +82,7 @@ public class CategoryFragment extends Fragment {
 
     protected void initRequestCategory() {
         OkHttpUtils
-                .post()
+                .get()
                 .url(Util.url + "api/category/getList")
                 .addParams("token", Util.getToken(requireActivity()))
                 .addParams("wxapp_id", "10001")
@@ -90,6 +95,7 @@ public class CategoryFragment extends Fragment {
 
                     @Override
                     public void onResponse(String response, int id) {
+                        System.out.println(response);
                         Gson gson = new Gson();
                         CategoryBean bean = gson.fromJson(response, CategoryBean.class);
                         categoryAdapter = new EasyAdapter<CategoryBean.DataBean>(bean.getData(), R.layout.category_item) {
@@ -218,5 +224,28 @@ public class CategoryFragment extends Fragment {
                         }
                     }
                 });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        Map<String, String> params = new HashMap<String, String>();
+
+        params.put("appVersion", Util.getAppVersionCode(requireActivity()));
+
+        new UpdateAppManager
+                .Builder()
+                //当前Activity
+                .setActivity(requireActivity())
+                .setPost(false)
+                .setParams(params)
+//                .setTopPic(R.mipmap.banner)
+                //更新地址
+                .setUpdateUrl(Util.url + "/api/apk/checkUpdate")
+                //实现httpManager接口的对象
+                .setHttpManager(new UpdateAppHttpUtil())
+                .build()
+                .update();
     }
 }

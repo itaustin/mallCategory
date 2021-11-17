@@ -28,6 +28,7 @@ import com.rbt.diamond.R;
 import com.rbt.diamond.activity.address.AddressManagerActivity;
 import com.rbt.diamond.activity.center.CertificateActivity;
 import com.rbt.diamond.activity.center.InviteFriendsActivity;
+import com.rbt.diamond.activity.my.ChangeHandlingFeePointsActivity;
 import com.rbt.diamond.activity.my.GoldenCouponActivity;
 import com.rbt.diamond.activity.my.MyBankAccountActivity;
 import com.rbt.diamond.activity.my.MyTeamActivity;
@@ -201,6 +202,11 @@ public class MyFragment extends Fragment {
         golden_coupon.setName("黄金置换");
         list.add(golden_coupon);
 
+        MyViewItemBean.DataBean forwardPoints = new MyViewItemBean.DataBean();
+        forwardPoints.setEng_name("handling_fee_points");
+        forwardPoints.setName("手工积分转发");
+        list.add(forwardPoints);
+
         MyViewItemBean.DataBean certificate = new MyViewItemBean.DataBean();
         certificate.setEng_name("certificate");
         certificate.setName("实名认证");
@@ -286,6 +292,10 @@ public class MyFragment extends Fragment {
                         image.setImageResource(R.mipmap.gold);
                         name.setText(dataBean.getName());
                         break;
+                    case "handling_fee_points":
+                        image.setImageResource(R.mipmap.handling_fee_points);
+                        name.setText(dataBean.getName());
+                        break;
                     case "certificate":
                         image.setImageResource(R.mipmap.certificate);
                         name.setText(dataBean.getName());
@@ -316,6 +326,10 @@ public class MyFragment extends Fragment {
                         }
                         if (dataBean.getEng_name() == "golden_coupon") {
                             Intent intent = new Intent(requireActivity(), GoldenCouponActivity.class);
+                            startActivity(intent);
+                        }
+                        if (dataBean.getEng_name() == "handling_fee_points") {
+                            Intent intent = new Intent(requireActivity(), ChangeHandlingFeePointsActivity.class);
                             startActivity(intent);
                         }
                         if(dataBean.getEng_name() == "logout") {
@@ -430,7 +444,7 @@ public class MyFragment extends Fragment {
                 .setActivity(requireActivity())
                 .setPost(false)
                 .setParams(params)
-                .setTopPic(R.mipmap.banner)
+//                .setTopPic(R.mipmap.banner)
                 //更新地址
                 .setUpdateUrl(Util.url + "/api/apk/checkUpdate")
                 //实现httpManager接口的对象

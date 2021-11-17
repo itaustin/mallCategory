@@ -29,7 +29,7 @@ import java.util.Date;
 
 public class Util {
     public static final String ws = "ws://114.115.200.77:8282";
-    public static final String url = "https://diamond.zuowey.com/";
+    public static final String url = "https://diamond.sxruibite.cn/";
 
     // 吐司默认
     public static void showToast(Context ctx, String msg){
