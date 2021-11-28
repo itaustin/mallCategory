@@ -297,6 +297,17 @@ public class MallOrderCheckoutActivity extends AppCompatActivity {
                                                                         Gson gson = new Gson();
                                                                         UploadImageBean imageBean = gson.fromJson(response, UploadImageBean.class);
                                                                         System.out.println("file_id：" + imageBean.getData().getFile_id());
+                                                                        System.out.println(Util.url + "?s=/api/order/buyNowAlipayForAndroid");
+                                                                        System.out.println("delivery" + " -- " + intent.getIntExtra("delivery", 0));
+                                                                        System.out.println("shop_id" + " -- " + intent.getIntExtra("shop_id", 0));
+                                                                        System.out.println("coupon_id" + " -- " + intent.getIntExtra("coupon_id", 0));
+                                                                        System.out.println("is_use_points" + " -- " + intent.getIntExtra("is_use_points", 0));
+                                                                        System.out.println("goods_id" + " -- " + intent.getIntExtra("goods_id", 0));
+                                                                        System.out.println("goods_num" + " -- " + intent.getIntExtra("goods_num", 0));
+                                                                        System.out.println("goods_sku_id" + " -- " + intent.getStringExtra("goods_sku_id"));
+                                                                        System.out.println("audit_image_id" + " -- " + imageBean.getData().getFile_id());
+                                                                        System.out.println("wxapp_id" + " -- " + intent.getIntExtra("wxapp_id", 0));
+                                                                        System.out.println("token" + " -- " + Util.getToken(MallOrderCheckoutActivity.this));
                                                                         OkHttpUtils
                                                                                 .post()
                                                                                 .url(Util.url + "?s=/api/order/buyNowAlipayForAndroid")
