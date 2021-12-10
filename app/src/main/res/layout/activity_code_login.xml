@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activity.passport.LoginActivity">
+        tools:context=".activity.passport.CodeLoginActivity">
 
         <com.hjq.bar.TitleBar
             android:id="@+id/titleBar"
@@ -25,7 +25,7 @@
             app:leftTitle="返回"
             app:lineVisible="false"
             app:rightColor="#333333"
-            app:title="登录"
+            app:title="验证码登录"
             app:titleColor="#333333" />
 
         <androidx.core.widget.NestedScrollView
@@ -121,6 +121,7 @@
                     android:layout_width="334.5dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
+                    android:visibility="gone"
                     android:gravity="center_vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -162,6 +163,63 @@
                     app:layout_constraintEnd_toEndOf="@+id/linearLayout10"
                     app:layout_constraintStart_toStartOf="@+id/linearLayout10"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout10" />
+
+
+                <LinearLayout
+                    android:id="@+id/linearLayout3"
+                    android:layout_width="334.5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:gravity="center_vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="验证码"
+                        android:textColor="#ff000000"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="2dp"
+                        android:layout_height="27dp"
+                        android:layout_marginStart="19dp"
+                        android:background="@drawable/login_line_bg" />
+
+                    <EditText
+                        android:id="@+id/active_code"
+                        android:layout_width="141.5dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="17.5dp"
+                        android:background="@null"
+                        android:hint="请输入验证码"
+                        android:textColor="#000000"
+                        android:textSize="16sp" />
+
+
+                    <TextView
+                        android:id="@+id/time"
+                        android:layout_width="88dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:text="获取验证码"
+                        android:textColor="#ffcab369"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout8"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@drawable/login_line_bg"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
+                    app:layout_constraintStart_toStartOf="@+id/linearLayout3"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
 
                 <!--            <LinearLayout-->
@@ -226,7 +284,7 @@
                     android:background="@drawable/login_btn_background"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayout11">
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
 
                     <TextView
                         android:id="@+id/textView5"
@@ -243,11 +301,11 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
-                    android:id="@+id/code_login"
+                    android:id="@+id/password_login"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="26dp"
-                    android:text="短信验证码登录"
+                    android:text="密码登录"
                     android:layout_marginBottom="50dp"
                     android:textColor="#ffcab369"
                     android:textSize="16sp"
@@ -259,5 +317,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

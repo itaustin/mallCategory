@@ -44,6 +44,12 @@
         tools:replace="android:theme"
         tools:targetApi="o">
         <activity
+            android:name=".activity.passport.CodeLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.points.PointsTradeActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.my.ChangeHandlingFeePointsActivity"
             android:exported="false" />
         <activity

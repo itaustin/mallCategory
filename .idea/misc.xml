@@ -34,6 +34,7 @@
         <entry key="app/src/main/res/drawable/order_checkout_line_background.xml" value="0.28854166666666664" />
         <entry key="app/src/main/res/drawable/order_white_background.xml" value="0.15729166666666666" />
         <entry key="app/src/main/res/drawable/points_middle_line_backgroubnd.xml" value="0.28854166666666664" />
+        <entry key="app/src/main/res/drawable/points_trade_data_background.xml" value="0.26495726495726496" />
         <entry key="app/src/main/res/drawable/round_camera.xml" value="0.17708333333333334" />
         <entry key="app/src/main/res/drawable/shop_cart_btn_background.xml" value="0.15729166666666666" />
         <entry key="app/src/main/res/drawable/sku_item_not_selected.xml" value="0.28854166666666664" />
@@ -48,6 +49,7 @@
         <entry key="app/src/main/res/layout/activity_certificate2.xml" value="0.22350427350427352" />
         <entry key="app/src/main/res/layout/activity_change_handling_fee_points.xml" value="0.2517094017094017" />
         <entry key="app/src/main/res/layout/activity_change_password.xml" value="0.2517094017094017" />
+        <entry key="app/src/main/res/layout/activity_code_login.xml" value="0.21452991452991452" />
         <entry key="app/src/main/res/layout/activity_comment.xml" value="0.27395833333333336" />
         <entry key="app/src/main/res/layout/activity_edit_address.xml" value="0.27395833333333336" />
         <entry key="app/src/main/res/layout/activity_ex_press_info.xml" value="0.27395833333333336" />
@@ -67,6 +69,7 @@
         <entry key="app/src/main/res/layout/activity_points_capital.xml" value="0.3" />
         <entry key="app/src/main/res/layout/activity_points_category.xml" value="0.21923076923076923" />
         <entry key="app/src/main/res/layout/activity_points_record.xml" value="0.27239583333333334" />
+        <entry key="app/src/main/res/layout/activity_points_trade.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_q_r_code.xml" value="0.298974358974359" />
         <entry key="app/src/main/res/layout/activity_reddem.xml" value="0.21923076923076923" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.25" />
